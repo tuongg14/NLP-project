@@ -1,82 +1,82 @@
 SRC: a young man participates in a career while the subject who records it smiles .
 REF: un jeune homme participe à une course pendant que le sujet qui le filme sourit .
-HYP: un jeune homme fait du vélo tandis qu' il est en train de la .
+HYP: un jeune homme fait du vélo dans le <unk> tandis que des spectateurs regardent .
 
 SRC: the man is scratching the back of his neck while looking for a book in a book store .
 REF: l' homme se gratte l' arrière du cou tout en cherchant un livre dans une librairie .
-HYP: l' homme fait son vélo tandis qu' il est dans un micro à un homme .
+HYP: l' homme regarde le visage tandis qu' il est un un un un un un un . .
 
 SRC: a person wearing goggles and a hat is sled riding .
 REF: une personne portant des lunettes de protection et un chapeau fait de la luge .
-HYP: une personne portant un chapeau et un chapeau de soleil .
+HYP: une personne portant des lunettes et un chapeau de soleil fait du vélo .
 
 SRC: a girl in a pink coat and flowered goloshes sledding down a hill .
 REF: une fille avec une veste rose et des <unk> à fleurs descend le long d' une colline en luge .
-HYP: une fille en robe rose et un un de sur sur un terrain de . .
+HYP: une fille en robe rose et un un de une une une course .
 
 SRC: three girls are standing in front of a window of a building .
 REF: trois filles se tiennent devant la fenêtre d' un bâtiment .
-HYP: trois filles sont debout devant un bâtiment bâtiment .
+HYP: trois filles sont debout devant un bâtiment devant un bâtiment .
 
 SRC: two dog is playing with a same chump on their mouth
 REF: deux chiens jouent avec le même morceau de bois dans la bouche .
-HYP: deux chiens jouant avec un ballon avec un ballon rouge
+HYP: deux chiens jouant avec un ballon avec des instruments
 
 SRC: low angle view of people suspended from the swings of a carnival ride .
 REF: une vue en <unk> de personnes suspendues sur les balançoires d' un manège .
-HYP: une foule de personnes se rassemblent le long d' un grand bâtiment .
+HYP: une foule de personnes regardant d' un d' d' un match de un . .
 
 SRC: black and white photo of two people watching a beautiful painting
 REF: une photo en noir et blanc de deux personnes en train de regarder une magnifique toile .
-HYP: un père et deux jeunes femmes posent pour une photo d' une fête
+HYP: un grand blanc et deux femmes posent pour une photo de un
 
 SRC: man dressed in black crosses the street screaming
 REF: un homme habillé en noir traverse la rue en criant .
-HYP: un homme en noir noir marche dans la rue
+HYP: un homme habillé en noir de la rue dans la rue
 
 SRC: a child sits on street on a busy street .
 REF: un enfant s' assied dans une rue très fréquentée .
-HYP: un enfant est assis sur un trottoir dans une rue .
+HYP: un enfant est assis sur une rue dans une rue .
 
 SRC: 15 large dogs playing   in a fenced yard beside a house .
 REF: <unk> grands chiens jouent dans un jardin clôturé à côté d' une maison .
-HYP: des chiens de chiens courent dans une cour dans une piscine .
+HYP: un gros chiens jouant avec un ballon dans une cour d' un .
 
 SRC: a typical scene on a busy street in front of a red - painted building .
 REF: une scène typique dans une rue très fréquentée devant un bâtiment peint en rouge .
-HYP: un policier sur un bâtiment en ville , une rue pavée .
+HYP: un policier sur un trottoir devant un bâtiment bâtiment bâtiment .
 
 SRC: a person walking one black dog on a leash while a yellow dog is unleashed .
 REF: une personne promène son chien noir en laisse alors que son labrador n' en a pas .
-HYP: une personne marchant sur un terrain chien et un chien noir sur un chien .
+HYP: une personne marchant sur un chien noir et un un chien tandis qu' un chien regarde .
 
 SRC: dog laying on outdoor wooden bench , with dog statue beside , yellow tennis ball laying on ground .
 REF: un chien est allongé sur un banc extérieur en bois , avec une statue de chien à côté de lui et il y a une balle de tennis jaune par terre .
-HYP: un chien court sur un terrain blanc , avec un chien brun , avec deux chiens , sur le sol .
+HYP: un chien court sur un terrain de sable , avec un chien chien sur le sol , avec une autre personne .
 
 SRC: a man is riding a bike with a child .
 REF: un homme fait du vélo avec un enfant .
-HYP: un homme fait du vélo avec un vélo .
+HYP: un homme fait un vélo avec un vélo .
 
 SRC: a big brown dog and small white dog playing with a frisbee in their mouths .
 REF: un grand chien brun et un petit chien blanc jouent avec un frisbee dans la bouche .
-HYP: un chien brun et un chien brun avec un chien noir dans dans un champ .
+HYP: un chien brun brun et un chien noir jouant avec un bâton dans sa gueule .
 
 SRC: four children are sitting against a wall having a conversation while two adult men stare into space .
 REF: quatre enfants sont assis contre un mur en pleine conversation pendant que les deux hommes adultes regardent <unk> .
-HYP: quatre enfants sont assis à un table , tandis que deux autres hommes sont assis à côté d' un . .
+HYP: quatre enfants sont assis à un table , un un , tandis que deux hommes regardent .
 
 SRC: three girls are sitting talking while the boys pose for the camera .
 REF: trois filles sont assises et en pleine discussion pendant que les garçons posent pour la caméra .
-HYP: trois filles sont assis à l' objectif tandis que l' autre regarde .
+HYP: trois filles sont assises sur des marches tandis que l' autre de l' océan .
 
 SRC: a lifeguard building is on the sand on a cloudy day .
 REF: la cabane d' un sauveteur sur le sable par une journée nuageuse .
-HYP: un pilote de est sur le sol sur une journée ensoleillée .
+HYP: un couple est sur sur le trottoir d' une journée ensoleillée .
 
 SRC: this is a young girl looking at a phone while the boy beside her is looking straight in to the camera .
 REF: on voit une jeune fille en train de regarder son téléphone avec un garçon à côté d' elle qui regarde directement vers la caméra .
-HYP: cette jeune fille tient un jeune fille tandis qu' elle est en train de la dans la main .
+HYP: voici une jeune fille regarde un jeune garçon tandis qu' un est assis à côté d' un autre homme .
 
 SRC: a high view of people walking near a beach .
 REF: une vue en hauteur de personnes marchant près d' une plage .
@@ -84,7 +84,7 @@ HYP: une foule de personnes marchant sur un trottoir .
 
 SRC: a dog is peeing on a dog statue in a garden .
 REF: un chien <unk> sur une statue de chien dans un jardin .
-HYP: un chien court après un chien dans un champ .
+HYP: un chien est sur un bâton dans un champ .
 
 SRC: a brown dog with a watering can on the ocico
 REF: un chien brun avec un arrosoir sur la pelouse .
@@ -92,295 +92,295 @@ HYP: un chien brun avec un bâton sur le sol
 
 SRC: an african american man playing guitar and singing in an urban setting .
 REF: un homme afro-américain joue de la guitare et chante dans un cadre urbain .
-HYP: un homme jouant jouant de la guitare et un un dans un parc .
+HYP: un homme jouant jouant de la guitare et jouant dans un parc .
 
 SRC: a young girl dances on a stage as her blue skirt twirls .
 REF: une jeune fille danse sur une scène avec sa jupe bleue qui tournoie .
-HYP: une jeune fille sur sur un balançoire tandis qu' elle est en train de jouer .
+HYP: une jeune fille sur une balançoire sur une tandis qu' elle est sur le trottoir .
 
 SRC: this image is of four women dancing in dresses in front of a group of people .
 REF: c' est l' image de quatre femmes qui dansent en robe devant un groupe de personnes .
-HYP: cette photo de femmes qui se devant devant une foule de personnes .
+HYP: cette photo de quatre femmes regardent devant un groupe de personnes devant un groupe .
 
 SRC: a woman stands on a subway platform waiting for the train .
 REF: une femme se tient debout à un quai de métro à attendre le train .
-HYP: une femme est debout sur le trottoir de la rue .
+HYP: une femme est debout sur un trottoir de la nourriture .
 
 SRC: two girls are wearing coats outside while eating ice cream .
 REF: deux filles portent une veste à l' extérieur en mangeant une glace .
-HYP: deux filles sont des chapeaux sont debout tandis que des autres sont assis .
+HYP: deux filles portant des chapeaux sont assises dehors tandis qu' ils sont debout .
 
 SRC: black and white shot of a man picking up a newspaper on a city street
 REF: une photo en noir et blanc d' un homme qui prend un journal dans une rue .
-HYP: un homme et une femme se tenant un livre dans une rue pavée d' une rue
+HYP: un homme blanc et un homme en train de faire une une dans une rue en ville
 
 SRC: a crowd is standing outside and holding up their cellphones
 REF: une foule se tient debout à l' extérieur en tenant leur téléphone portable en hauteur .
-HYP: une foule est debout et et et des gens
+HYP: une foule est debout et et des autres
 
 SRC: this image is of a dog running around a tree in a wooded area .
 REF: c' est l' image d' un chien qui court autour d' un arbre dans un terrain boisé .
-HYP: c' un adulte fait un chien dans un champ dans un parc .
+HYP: c' est un chien brun dans un parc d' un petit chien .
 
 SRC: this image is of a man and a woman walking on a beach in front of palm trees .
 REF: c' est l' image d' un homme et d' une femme qui marchent sur une plage devant des palmiers .
-HYP: cette photo d' un homme et une femme en devant un bâtiment avec des arbres .
+HYP: c' est un homme et une femme sont debout devant un bâtiment et une foule .
 
 SRC: young girl holding sign : " tenho em mim todos os sonhos do mundo " sitting on shoulders of man .
 REF: une petite fille tient une pancarte : " <unk> em <unk> <unk> os <unk> do <unk> " tout en étant assise sur les épaules d' un homme .
-HYP: une jeune fille tenant des <unk> de la nourriture sur un trottoir , tandis qu' un homme <unk> de la nourriture sur le trottoir .
+HYP: une jeune fille tenant des <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> .
 
 SRC: a tan dog tugs on a hose from a vacuum cleaner .
 REF: un labrador tire sur le tuyau d' un aspirateur .
-HYP: un chien brun court sur un chemin de un un . .
+HYP: un chien brun court sur un chemin d' un un . .
 
 SRC: a girl and a boy posing for a photo , in the background a lady sitting and several people standing
 REF: une fille et un garçon posent pour une photo , en arrière-plan il y a une femme assise et plusieurs personnes debout .
-HYP: une fille et une femme et une femme sont debout devant une foule , avec une foule de personnes sont debout derrière lui
+HYP: une fille et un jeune garçon sont assis à une table , avec deux autres personnes sont debout et regardent .
 
 SRC: two people work on an elaborate sand sculpture that is shaped like a man .
 REF: deux personnes travaillent sur une sculpture de sable complexe qui a la forme d' un homme .
-HYP: deux personnes faisant du vélo sur un trottoir , un un homme un un . .
+HYP: deux personnes sur un vélo sur un un d' un un de un . .
 
 SRC: black and white photo of a boy in the middle of a street
 REF: une photo en noir et blanc d' un garçon au beau milieu d' une rue .
-HYP: un garçon et une femme en noir et un un dans une rue
+HYP: un gars et un blanc blanc avec un micro devant un bâtiment
 
 SRC: the young girl in the white coat is clapping and clearly excited or happy .
 REF: la jeune fille avec une veste blanche applaudit et est clairement enthousiaste ou heureuse .
-HYP: la jeune fille en blanc et blanc est en train de faire des <unk> .
+HYP: la jeune fille en tenue blanche et un et blanc et des .
 
 SRC: the dog is jumping after a toy held by the woman .
 REF: le chien saute pour attraper un jouet tenu par la femme .
-HYP: le chien saute par - dessus une balle de la . .
+HYP: le chien saute par - dessus une balle de la .
 
 SRC: white dog with brown spots digging with his paws the sand
 REF: un chien blanc à tâches brunes creuse le sol avec ses pattes .
-HYP: un chien brun avec un collier avec sa tête sur le sol .
+HYP: un chien blanc avec avec son chien avec le ballon avec le ballon
 
 SRC: a cat or dog trying to play the piano .
 REF: un chat ou un chien qui essaie de jouer du piano .
-HYP: un petit chien de se prépare pour attraper le ballon .
+HYP: un chien brun se prépare pour attraper le ballon .
 
 SRC: a child with a blue brimmed hat staring intently at something behind a fence .
 REF: un enfant avec un chapeau à bord bleu regarde fixement quelque chose derrière une barrière .
-HYP: un enfant avec un chapeau de paille à une autre femme qui est en train de regarder .
+HYP: un enfant avec un chapeau de paille et un une boule de une . .
 
 SRC: this image is of a little girl leaning against her parents bed while she 's looking at herself in the mirror .
 REF: c' est l' image d' une petite fille appuyée contre le lit de ses parents pendant qu' elle observe son reflet dans le miroir .
-HYP: cette photo d' une fille fille est assise à la femme tandis qu' elle est assise à la table dans la rue .
+HYP: cette photo est une fille fille tandis qu' elle est en train de regarder la main tandis que d' autres personnes regardent .
 
 SRC: a black girl hanging upside down with her little braids dragging the ground .
 REF: une fille à la peau <unk> à l' envers avec ses petites tresses qui touchent le sol .
-HYP: une fille blonde se repose sur le sol avec son bras avec son . .
+HYP: une fille fille se tient sur le sol avec son bras de la tête .
 
 SRC: a black and white image of a woman in a coffee shop , and a reflection of a car in the window .
 REF: une image en noir et blanc d' une femme à un café , et le reflet d' une voiture dans la fenêtre .
-HYP: un père et une femme en blanc , une une une une une une une une une robe en ville .
+HYP: une femme et un un blanc avec un sac à dos et un un une une d' une grande foule de . .
 
 SRC: black dog coming out of the beach with a toy on his trunk
 REF: un chien noir sort de la plage avec un jouet dans la bouche .
-HYP: un chien noir avec le long avec un jouet sur un avec un
+HYP: un chien noir court avec le ballon avec un bâton sur sa tête
 
 SRC: girls have suckers as they wear plastic over their costumes .
 REF: les filles ont des <unk> tout en portant du plastique par - dessus leurs costumes .
-HYP: des filles <unk> des <unk> <unk> tandis que des spectateurs regardent .
+HYP: des filles <unk> des <unk> tandis que des spectateurs regardent leur <unk> .
 
 SRC: a man holds and speaks through a megaphone in the street
 REF: un homme parle à travers un mégaphone dans la rue .
-HYP: un homme et un homme se tient dans une rue en ville
+HYP: un homme et une femme se dans dans dans une rue
 
 SRC: six children of different races stand in front of a wooden fence
 REF: six enfants de race <unk> se tiennent debout devant une barrière en bois .
-HYP: six enfants africains habillés en devant un devant un groupe
+HYP: six enfants enfants sont debout devant un mur de
 
 SRC: a child is dressed in all white with a white painted face .
 REF: un enfant est habillé tout en blanc avec de la peinture blanche sur le visage .
-HYP: un enfant habillé en blanc avec un avec blanc .
+HYP: un enfant blanc avec un t - shirt blanc avec un un blanc .
 
 SRC: a man in a yellow biking shirt and sunglasses walks along a street .
 REF: un homme avec un maillot jaune de cycliste et des lunettes de soleil marche dans la rue .
-HYP: un homme en t - shirt bleu et un jean marche dans la rue .
+HYP: un homme en t - shirt bleu et des lunettes de soleil marchant dans une rue .
 
 SRC: a dog rests in the grass while its owner looks on .
 REF: un chien se repose dans l' herbe pendant que son propriétaire l' observe .
-HYP: un chien court dans l' eau tandis que l' autre en l' air .
+HYP: un chien court dans l' eau tandis qu' il court sur sa gueule .
 
 SRC: a woman laughs and hugs her dog as they sit on a grassy lawn together .
 REF: une femme rit et prend son chien dans les bras pendant qu' ils sont assis ensemble sur une pelouse bien verte .
-HYP: une femme et son chien et son chien tandis qu' il est sur une piste .
+HYP: une femme et son chien et se tiennent sur un d' une une sur un terrain de . .
 
 SRC: a blurry shot of someone walking through a terminal .
 REF: une photo floue de quelqu' un qui marche à travers un <unk> .
-HYP: une équipe de de cyclistes marchant dans un parc .
+HYP: une foule de course de un un dans un parc .
 
 SRC: a blond and white child with hands on waist
 REF: un enfant blond et blanc avec ses mains sur la taille .
-HYP: un petit enfant et un avec des lunettes de soleil
+HYP: un enfant blond et blanc avec des lunettes de soleil
 
 SRC: five white puppies huddled together with one licking the others snout .
 REF: cinq chiots blancs <unk> ensemble avec un qui lèche le museau d' un autre .
-HYP: cinq jeunes blancs avec des instruments de l' un avec un ballon .
+HYP: quatre jeunes enfants blanc avec leurs bras levés sur le sol .
 
 SRC: a puppy is content on top of a red train .
 REF: un chiot est <unk> sur le toit d' un train rouge .
-HYP: un gars est sur sur un terrain rouge .
+HYP: un gars est sur sur un d' une rampe rouge .
 
 SRC: black dog with front legs out with one yellow bandage on one leg .
 REF: un chien noir dont on voit les pattes avant , une portant un bandage jaune .
-HYP: un chien noir avec un bâton avec un bâton sur un terrain de . .
+HYP: un chien noir avec un bâton avec un bâton avec un bâton .
 
 SRC: a young girl closes her eyes to enjoy the music of a guitarist on a stage .
 REF: une jeune fille ferme les yeux pour profiter de la musique d' un guitariste sur scène .
-HYP: une jeune fille s' apprête à frapper une balle sur une une sur une piste .
+HYP: une jeune fille a son <unk> sur le sol d' une voiture de un un . .
 
 SRC: black and white photo of a woman with her guitar accompanied by a friend
 REF: une photo en noir et blanc d' une femme avec sa guitare , accompagnée par un ami .
-HYP: une femme et un blanc avec son bras à une femme avec une femme de
+HYP: un femme et un femme avec des lunettes de soleil un un une femme avec un
 
 SRC: this is a woman looking at her phone and a man beside her drinking from a bottle .
 REF: c' est une femme qui regarde son téléphone et un homme à côté d' elle boit à la bouteille .
-HYP: cette femme tient un homme homme et un homme à la main d' un homme à une femme .
+HYP: cette photo d' un homme et une femme en train de regarder un homme sur un un .
 
 SRC: black and white image of 3 men riding bicycles through a city street .
 REF: une image en noir et blanc de trois hommes roulant à vélo à travers une rue .
-HYP: un père et une femme en noir et des une rue dans une rue .
+HYP: un père et des femmes en blanc marchent dans une rue pavée dans une rue .
 
 SRC: brown dog carries a bag on his back and inside a puppy
 REF: un chien brun porte un sac sur son dos et un chiot se trouve à l' intérieur .
-HYP: un chien brun avec un chien sur son chien sur un un
+HYP: un chien brun et un un bâton sur un jouet rouge
 
 SRC: three young people with a guitar resting on top of a mountain
 REF: trois jeunes avec une guitare qui se reposent au sommet d' une montagne .
-HYP: trois jeunes enfants avec un guitare sur une scène de
+HYP: trois jeunes filles avec un un sur un trottoir d' un bâtiment
 
 SRC: a small girl and an old man do an acrobatic pirouette in front of a crowd in a street
 REF: une petite fille et un vieillard font une <unk> acrobatique devant une foule dans la rue .
-HYP: une petite fille et un homme tenant une photo de devant une foule devant une foule de
+HYP: une petite fille et un homme et une femme posent devant un magasin devant un bâtiment
 
 SRC: a tan dog splashes in a body of still water
 REF: un labrador s' éclabousse dans une étendue d' eau calme .
-HYP: un chien brun marche dans une eau peu profonde de l' eau
+HYP: un chien brun court dans une piscine d' eau
 
 SRC: a small dog giving a big jump to catch the ball
 REF: un petit chien saute très haut pour attraper la balle .
-HYP: un petit chien court après un ballon de football
+HYP: un petit chien saute après un ballon de foot pour attraper le ballon
 
 SRC: two men in a boat with a boy sitting on the bow holding a bottle .
 REF: deux hommes dans un bateau avec un garçon assis sur la <unk> tenant une bouteille .
-HYP: deux hommes dans un bâtiment avec un sac à dos sur un banc et un un .
+HYP: deux hommes dans un bateau avec un sac à dos sur un trottoir et un un .
 
 SRC: black and white picture of a girl hanging upside down and giving thumbs up
 REF: une image en noir et blanc d' une fille suspendue à l' envers et qui donne des pouces vers le haut .
-HYP: un chien et une fille et une une fille blanche et une fille en train de
+HYP: un chien blanc et blanc avec une fille et une autre fille qui a des
 
 SRC: a man with a beard is seen through a window holding a cup , while a man in the background reads a newspaper .
 REF: on peut voir un homme barbu à travers une fenêtre tenir un gobelet , pendant qu' un homme en arrière-plan lit un journal .
-HYP: un homme avec un sac à dos est debout devant un bâtiment , tandis qu' un homme homme un un micro .
+HYP: un homme avec un chapeau de soleil tient un micro tandis qu' un homme homme en tenant un sac à dos en arrière-plan .
 
 SRC: five young children making heart shapes with their hands .
 REF: 5 enfants qui font des cœurs avec leurs mains .
-HYP: cinq jeunes enfants avec des avec des leurs têtes .
+HYP: cinq jeunes enfants jouent avec des avec des leurs têtes .
 
 SRC: a large white dog trying to get on a wooden deck while in the water of a lake .
 REF: un grand chien blanc essaie de monter sur une plateforme en bois tout en étant dans l' eau du lac .
-HYP: un petit chien blanc court après un gros plan d' eau sur un chemin dans un parc .
+HYP: un gros chien blanc se tient sur le sol d' un eau dans un eau dans un parc .
 
 SRC: black and white image of a little boy riding a big bicycle through the grass .
 REF: une image en noir et blanc d' un petit garçon qui roule avec un grand vélo à travers la verdure .
-HYP: un garçon et un garçon courant sur un terrain de un terrain de sable dans un parc .
+HYP: un chien blanc et un collier blanc sautant dans un champ dans l' herbe .
 
 SRC: two young women pause next to a wall in order to look at a cell phone .
 REF: deux jeunes femmes s' arrêtent près d' un mur pour regarder leur téléphone .
-HYP: deux jeunes femmes se tiennent à côté d' un mur de un dans un un . .
+HYP: deux jeunes femmes se tiennent à un d' un un à côté d' un un . .
 
 SRC: a crowd gathered in an urban setting uses umbrellas and plastic ponchos to protect themselves from the rain .
 REF: une foule rassemblée dans un milieu urbain utilise des parapluies et des ponchos en plastique pour se protéger de la pluie .
-HYP: une foule de gens dans une rue , des gens et des des et et des la nourriture .
+HYP: une foule de personnes dans une rue , des des et des des et des des <unk> .
 
 SRC: a person jumps off of a high cliff into a river below .
 REF: une personne saute dans la rivière <unk> depuis une haute falaise .
-HYP: une personne saute d' une rampe dans une piscine enneigée .
+HYP: une personne saute d' un vélo dans une piscine enneigée .
 
 SRC: a person on a floating raft over the rapids of a river
 REF: une personne dans un canot pneumatique sur les rapides d' une rivière
-HYP: une personne sur un vélo sur le trottoir d' une montagne
+HYP: une personne sur un vélo sur un chemin de terre d' une plage
 
 SRC: two children jumping and running down a hill .
 REF: deux enfants sautent et descendent une colline en courant .
-HYP: deux enfants courant sur un terrain de football .
+HYP: deux enfants courant sur un chemin de terre .
 
 SRC: a young child with a red sweater is jumping rope on a city sidewalk .
 REF: un enfant avec un chandail rouge saute à la corde sur un trottoir .
-HYP: un jeune enfant avec un t rouge est sur une balançoire .
+HYP: un jeune enfant avec un chapeau rouge sur un trottoir en bois .
 
 SRC: person behind window sill offering liquor with person standing outside of window opening .
 REF: une personne derrière le rebord d' une fenêtre offre de la <unk> à une personne qui se trouve dehors , derrière l' ouverture de la fenêtre .
-HYP: une personne avec des gens de des gens debout devant des <unk> de <unk> .
+HYP: une personne se tient avec des <unk> de personnes , avec des <unk> de . .
 
 SRC: a large white dog standing on a wooden dock watching a duck swimming in a lake .
 REF: un grand chien blanc sur une plateforme en bois qui regarde un canard nager dans un lac .
-HYP: un gros chien blanc est debout sur un chemin de un dans un parc dans un parc .
+HYP: un petit chien blanc debout sur un terrain de un un un un dans un parc .
 
 SRC: a dog in the water overlooking a sunset .
 REF: un chien dans l' eau qui regarde un coucher de soleil .
-HYP: un chien dans l' eau avec un bâton .
+HYP: un chien dans l' eau peu profonde d' un . .
 
 SRC: a white dog chews on an empty plastic bottle while standing in a body of water
 REF: un chien blanc <unk> une bouteille vide en plastique tout en se tenant dans une étendue d' eau .
-HYP: un chien blanc est sur un rocher , avec un bâton dans un parc dans un parc
+HYP: un chien blanc est sur un terrain avec un un dans dans une eau eau
 
 SRC: a girl is sitting in the grass next to a white dog .
 REF: une fille est assise dans l' herbe à côté d' un chien blanc .
-HYP: une fille est assise dans l' herbe près d' un petit chien .
+HYP: une fille est debout sur le côté d' un petit chien .
 
 SRC: girl in unusual face mask with other people beside her .
 REF: une fille portant un masque <unk> inhabituel avec d' autres personnes à côté d' elle .
-HYP: une fille avec des lunettes de soleil avec des gens en regardant des gens .
+HYP: une fille en tenue de avec avec une femme avec des des . .
 
 SRC: a woman holds her dog 's face in her face and prepares to kiss it .
 REF: une femme tient le visage de son chien entre ses mains et s' apprête à l' embrasser .
-HYP: une femme tient son chien et son chien dans sa gueule dans sa gueule .
+HYP: une femme tient son chien pour son chien et son chien pour attraper des autres .
 
 SRC: a group of police officers in argentina in black and white .
 REF: un groupe de policiers en <unk> en noir et blanc .
-HYP: un groupe de jeunes filles en noir et blanc .
+HYP: un groupe de filles en uniformes blanches et des en blanc .
 
 SRC: someone jumping off of a large cliff into a mountain lake .
 REF: quelqu' un saute dans un lac de montagne depuis une grande falaise .
-HYP: quelqu' un saute d' une montagne enneigée dans une forêt enneigée .
+HYP: quelqu' un saute d' un rocher dans un parc d' d' un . .
 
 SRC: a painter is painting a larger version of a picture .
 REF: un peintre en plein travail sur une version plus large d' une image .
-HYP: un policier fait une photo d' un bâtiment .
+HYP: un policier est une photo d' une foule de personnes .
 
 SRC: a man and a woman look at flyers stuck in a glass .
 REF: un homme et une femme qui regardent des <unk> <unk> sur une vitre .
-HYP: un homme et une femme se des dans dans une salle de classe .
+HYP: un homme et une femme se tiennent dans une dans une salle de classe .
 
 SRC: a beach house next to sand and a group of people in the background of a black and white shot .
 REF: une maison de plage à côté du sable et un groupe de personnes au fond d' une image en noir et blanc .
-HYP: un skieur est assis à côté d' un grand bâtiment blanc , avec un un et un en arrière-plan .
+HYP: un skieur de train de regarder un grand et et un et un et d' un groupe de personnes sont debout en arrière-plan .
 
 SRC: a child wears a pair of goggles in front of a uhaul
 REF: un enfant porte des lunettes de protection devant un camion <unk> - <unk> .
-HYP: un enfant tient un enfant devant un devant un
+HYP: un enfant tient un enfant devant un groupe de
 
 SRC: an old woman in a heavy jacket is eating of a plate on her lap .
 REF: une vieille femme portant une grosse veste est en train de manger ce qu' il y a sur un plateau placé sur ses genoux .
-HYP: une femme âgée en robe bleue fait une vélo sur son téléphone portable .
+HYP: une femme âgée en robe rose marche sur une grande de de . .
 
 SRC: a person is beginning to descend the stairs to the subway in a foreign country .
 REF: une personne commence à descendre les escaliers qui vont l' <unk> au métro dans un pays étranger .
-HYP: une personne fait du vélo pour la photo dans un dans un marché .
+HYP: une personne est à le point de la un d' une dans une grande . .
 
 SRC: the girl is at a playground wearing a colorful dress .
 REF: la fille est sur une aire de jeux habillée d' une robe colorée .
-HYP: la fille est un un en robe d' une robe .
+HYP: la fille est une fille en robe bleue .
 
 SRC: a person with arms extended wears a green and yellow parrot costume .
 REF: une personne qui tend les bras et porte un costume de perroquet vert et jaune .
-HYP: une personne avec des lunettes de soleil et une casquette bleue et un . .
+HYP: une personne avec des lunettes et un sac à dos et un un . .
 
 SRC: a man is walking by himself in front of a church .
 REF: un homme marche tout seul devant une église .
@@ -388,7 +388,7 @@ HYP: un homme marche devant une foule devant une foule .
 
 SRC: a man plays a guitar and drinks a small coffee .
 REF: un homme joue de la guitare et boit un petit café .
-HYP: un homme joue un un et un un un . .
+HYP: un homme joue de la guitare et un un un . .
 
 SRC: a man going down the stairs of the subway of the city
 REF: un homme descend les escaliers du métro de la ville .
@@ -396,19 +396,19 @@ HYP: un homme fait du vélo au milieu d' une rue
 
 SRC: a man walks dow a dirt path on the side of the road .
 REF: un homme descend le long d' une route sale .
-HYP: un homme fait du vélo sur une route de la route sur le trottoir .
+HYP: un homme marche sur une route de la route sur le route .
 
 SRC: a woman and her dog passing by the lake shore
 REF: une femme et son chien passent près de la rive du lac .
-HYP: une femme et son chien se pour la le sol
+HYP: une femme et son chien se tient sur le sol
 
 SRC: a couple of old men sit in the sidewalk with some boxes and bags .
 REF: deux personnes âgées assises sur le trottoir avec des boîtes et des sacs .
-HYP: un hommes âgés sont assis dans la rue avec des avec des et et des .
+HYP: un couple hommes sont assis dans un bateau et des des avec des instruments .
 
 SRC: a group of people and dogs are in a park .
 REF: un groupe de personnes avec des chiens dans un parc .
-HYP: un groupe de personnes et un dans dans une rue .
+HYP: un groupe de personnes et un dans un parc .
 
 SRC: two women entering their dog in the yard
 REF: deux femmes qui font entrer leur chien dans le jardin .
@@ -416,191 +416,191 @@ HYP: deux femmes se battent dans la neige
 
 SRC: dogs humping and playing beside a man in clear blue water at the beach .
 REF: deux chiens sautent dans l' eau et jouent à côté d' un homme dans l' eau bleu <unk> à la plage .
-HYP: des chiens jouant et un chien dans l' eau , l' autre en l' autre en arrière-plan .
+HYP: des chiens jouent dans un champ , l' un l' eau avec un chien en l' .
 
 SRC: these children are keeping cool by playing in a city fountain .
 REF: ces enfants s' amusent en jouant dans la fontaine de la ville .
-HYP: plusieurs enfants sont des enfants dans une rue dans une rue .
+HYP: quatre enfants sont des chapeaux sont debout dans une pièce . .
 
 SRC: a group of young girls in orange and purple perform a show .
 REF: un groupe de jeunes filles en orange et violet <unk> une chorégraphie .
-HYP: un groupe de jeunes filles en tenues et et un un .
+HYP: un groupe de jeunes filles en tenues et un et un un . .
 
 SRC: two dogs swimming in a lagoon with something in their mouth
 REF: deux chiens nagent dans un <unk> avec quelque chose dans la bouche .
-HYP: deux chiens courent dans une piscine avec des arbres en l' air
+HYP: deux chiens courant dans un champ avec des arbres en arrière-plan
 
 SRC: a cheerleader in black and orange is hoisted into the air by other cheerleaders .
 REF: une <unk> avec des vêtements oranges et noires se fait <unk> dans les airs par d' autres membres de son groupe .
-HYP: un enfant en maillot rouge et blanc saute en l' air pour attraper des autres .
+HYP: un coureur en tenue bleue et des lunettes de soleil est en l' air .
 
 SRC: a scene from the air of people walking on cobblestone sidewalk with a man standing near brightly colored prayer mats .
 REF: une scène depuis le ciel de personnes marchant sur un chemin en pavés avec un homme debout face à des tapis de prière aux couleurs <unk> .
-HYP: une rue de rue , avec des gens debout sur le trottoir , avec un homme de de .
+HYP: une rue de rue avec des gens debout sur un trottoir , avec des gens de des gens sur des marches .
 
 SRC: several children are watching someone chase a ball on the sidewalk .
 REF: plusieurs enfants regardent quelqu' un courir après une balle sur le trottoir .
-HYP: plusieurs enfants regardent des enfants sur un sur le trottoir .
+HYP: plusieurs enfants regardent des enfants sur le sol sur le trottoir .
 
 SRC: a dog is licking a man 's face who has his glasses on top of his head .
 REF: un chien lèche le visage d' un homme qui a ses lunettes sur la tête .
-HYP: un chien fait un vélo sur son téléphone portable son son son son son téléphone .
+HYP: un chien fait un un sur le sol avec son bras de sa tête en arrière-plan .
 
 SRC: a person wearing a blue and red outfit is standing in a sandy area near water .
 REF: une personne habillée en rouge et en bleu se tient debout sur une étendue de sable près de l' eau .
-HYP: une personne portant un manteau rouge et un pantalon rouge marche dans une rue en ville .
+HYP: une personne portant un chapeau rouge et une veste rouge est debout près d' une eau .
 
 SRC: a young blond woman dressed in costume is performing a baton routine on a football field .
 REF: une jeune femme blonde vêtue d' un costume s' entraîne au bâton sur un terrain de foot .
-HYP: une jeune femme blonde en tenue de baseball sur un terrain de football sur un terrain .
+HYP: une jeune femme blonde vêtue d' un haut de un un un un un un . .
 
 SRC: a man is sitting in a chair on the water 's edge with a fishing pole .
 REF: un homme assis sur une chaise au bord de l' eau avec une canne à pêche .
-HYP: un homme est assis sur un banc avec un sac à côté d' un bâtiment .
+HYP: un homme est assis sur un banc avec un avec un avec un avec un . .
 
 SRC: a kid   holding with hand up wearing a leopard mask
 REF: un enfant lève la main en portant un masque de léopard .
-HYP: un enfant avec avec une femme avec un sac à dos .
+HYP: un enfant tenant une photo avec une fille avec une pancarte
 
 SRC: an owner standing still with her brown dog running toward her .
 REF: une propriétaire <unk> avec son chien qui court vers elle .
-HYP: un chien brun avec son chien sur sa tête .
+HYP: un chien brun avec sa gueule ouverte dans sa gueule .
 
 SRC: a woman and her leashed dog near the edge of a pond .
 REF: une femme et son chien en laisse près du bord d' un étang .
-HYP: une femme et son chien se près d' une clôture .
+HYP: une femme et son chien se tient près d' une fenêtre .
 
 SRC: a brown dog is sitting next to a man who is bending under a christmas tree .
 REF: un chien à poils bruns est assis près d' un homme penché sous un sapin de noël .
-HYP: un chien brun est assis à côté d' un homme à côté d' un homme .
+HYP: un chien brun est assis à côté d' un un à côté d' un homme .
 
 SRC: a man and a woman are sitting on a park bench watching another man and woman walk by .
 REF: un homme et une femme sont assis sur le banc d' un parc à regarder un autre homme et une autre femme passer .
-HYP: un homme et une femme sont assis sur un banc et un autre femme sont debout sur le trottoir .
+HYP: un homme et une femme sont assis sur un banc et une femme tandis qu' un autre femme est assise .
 
 SRC: a tan dog on a leash walking over a metal grate in the middle of a leaf covered wooden walkway .
 REF: un chien beige en laisse marche sur une grille métallique en plein milieu d' une allée recouverte de feuilles .
-HYP: un chien brun sur un vélo sur un chemin de terre , un un de de de la dans la neige .
+HYP: un chien brun sur un chemin de terre , d' une grande foule de personnes sur le sol d' une foule .
 
 SRC: this image is of a girl looking to her right holding up three fingers .
 REF: c' est l' image d' une fille qui regarde à droite en tenant trois doigts vers le haut .
-HYP: cette photo d' une fille fille regarde ses mains à son bras .
+HYP: cette photo d' un fille regarde la main et regarde son doigt .
 
 SRC: a boy with a hat sits on a duck riding toy .
 REF: un garçon avec un chapeau s' assied sur une balançoire canard à ressort .
-HYP: un garçon avec un chapeau est assis sur un rocher .
+HYP: un garçon avec un chapeau est assis sur un rocher sur un . .
 
 SRC: a woman taking a photograph of two women with a building of asian architecture background
 REF: une femme photographie deux femmes avec un bâtiment d' architecture asiatique en arrière-plan .
-HYP: une femme tenant un un d' un groupe d' enfants , l' un d' un bâtiment
+HYP: une femme , deux deux femmes avec un groupe de personnes en arrière-plan
 
 SRC: a person dressed in white motocross gear sits on a white atv with a scenic view of mountains behind them .
 REF: une personne vêtue d' un costume de motocross blanc sur un 4x4 de la même couleur avec une vue panoramique des montagnes derrière lui .
-HYP: une personne vêtue d' un pantalon blanc est sur un banc avec une avec un avec , avec des <unk> .
+HYP: une personne vêtue d' un t - shirt blanc est sur un trottoir avec un avec avec des autres hommes .
 
 SRC: a boy in a white jacket stands alone by a gated door .
 REF: un garçon vêtu d' une veste blanche est debout seul face à une porte .
-HYP: un garçon en veste rouge est debout près d' une clôture de . .
+HYP: un garçon en veste blanche est debout près d' une clôture de . .
 
 SRC: a woman wearing headphones is walking on a path surrounded by trees .
 REF: une femme avec un casque audio marche sur une route entourée d' arbres .
-HYP: une femme portant des lunettes de soleil sur un chemin de de . .
+HYP: une femme portant des lunettes de soleil marche sur un chemin de . .
 
 SRC: a fishmonger prepares a fish behind a table of fish neatly laid out for sale .
 REF: un <unk> prépare un poisson derrière une table fraîchement <unk> pour ses <unk> <unk> .
-HYP: un artiste de une une une de une grande foule de personnes <unk> .
+HYP: un couple de une un une <unk> de <unk> <unk> de <unk> de nourriture .
 
 SRC: a woman taking her dog for a walk alongside a river in a forest .
 REF: une femme emmène son chien se promener le long d' une rivière dans une forêt .
-HYP: une femme regarde pour attraper un chien dans un dans un un dans un parc .
+HYP: une femme regarde son chien pour attraper un dans un dans un un .
 
 SRC: a bus stop vestibule on a city street with sparse snow and people walking about .
 REF: un arrêt de bus dans une rue du centre - ville avec des <unk> de neige et des gens qui passent .
-HYP: un artiste de rue sur une rue avec des gens et des gens marchant dans une rue .
+HYP: un policier de rue sur une rue avec des gens de personnes dans une rue en ville .
 
 SRC: three men is playing in a concert one have a horse mask
 REF: trois hommes jouent dans un concert , un d' entre eux porte un masque de cheval .
-HYP: trois hommes jouent au football sur un un un un un un
+HYP: trois hommes jouent dans un champ , un un un un
 
 SRC: a woman on a bus with her chin in her hand with her eyes closed .
 REF: une femme dans un bus avec son menton dans la main et avec les yeux clos .
-HYP: une femme sur un vélo avec son bras avec ses mains dans sa main .
+HYP: une femme sur un vélo avec son sac à main main avec son sac à main .
 
 SRC: blond haired little girl with yellow tights , pink skirt and green top in a group activity
 REF: une petite fille blonde avec des collants jaunes , une robe rose et un haut vert dans une activité de groupe .
-HYP: une petite fille blonde avec un chapeau rouge , un un rouge et un pantalon rouge et un
+HYP: une petite fille blonde avec des cheveux blonds et un pantalon rouge et un pantalon rouge
 
 SRC: a young girl posing for a woman who is drawing a caricature of her .
 REF: une jeune fille pose pour une femme qui la croque de façon <unk> .
-HYP: une jeune fille tenant un jeune femme qui a une femme .
+HYP: une jeune fille regarde une femme qui a une femme âgée .
 
 SRC: a black and white scene of a woman sitting on a bench holding a leash on her dog beside water .
 REF: une scène en noir et blanc d' une femme assise sur un banc qui tient la laisse de son chien à côté de la mer .
-HYP: un chien blanc et un chien blanc sur un banc et et un un chien tandis qu' il est assis sur un terrain .
+HYP: un chien blanc et un chien sont assis sur un banc , tandis qu' un autre homme assis sur un canapé .
 
 SRC: a black and white view of a person walking next to a big wall
 REF: une vue en noir et blanc d' une personne marchant à côté d' un grand mur .
-HYP: un chien blanc et une femme blanche à côté d' une grande voiture
+HYP: un chien blanc et un un blanc debout devant un mur de
 
 SRC: a woman in a black gown buying food at a fruit and vegetables stand .
 REF: une femme vêtue d' une toge noire achète de la nourriture à un stand de fruits et légumes .
-HYP: une femme en costume noir et un un de la nourriture à une table .
+HYP: une femme en costume de et des lunettes de soleil et un un de nourriture .
 
 SRC: bananas and other produce are displayed for sale in an outdoor market .
 REF: des bananes et d' autres produits sont exposés à la vente dans un marché extérieur .
-HYP: des adultes et des enfants posent pour un match dans un match .
+HYP: des adultes et des enfants font un un dans un marché dans un marché .
 
 SRC: several tourists are walking through a very nice arch on a rainy day .
 REF: plusieurs touristes traversent une très jolie arche par une journée pluvieuse .
-HYP: plusieurs personnes marchent sur un chemin de une journée ensoleillée .
+HYP: plusieurs personnes marchent dans une rue pavée de une journée ensoleillée .
 
 SRC: police dog waits patiently near sidewalk near a man in rubber boots and helmet .
 REF: un chien policier attend patiemment près du trottoir à proximité d' un homme portant des bottes en caoutchouc et un casque .
-HYP: un chien se tient à côté d' un homme en et et un un dans un parc .
+HYP: un chien se tient à côté d' un homme avec un un et un autre homme .
 
 SRC: a cat grabs a person 's foot and bites it
 REF: un chat attrape le pied d' une personne et le mord .
-HYP: un bébé tenant une photo et et son fils
+HYP: une personne tenant un un et son chien
 
 SRC: a person sitting with crossed hands and a rat next to him
 REF: une personne assise les bras croisés et un <unk> à côté de lui
-HYP: une personne assise à côté d' un petit et et un autre de
+HYP: une personne assise à côté d' un petit et et un à côté de lui
 
 SRC: a small brown eyed black dog adorned with a white fur rimmed red santa claus hat , sits on a wooden floor and stares off to the right of it .
 REF: un petit chien noir aux yeux bruns avec un chapeau de père noël en fourrure blanche et <unk> rouge , s' assied sur un sol en bois et regarde fixement vers la droite .
-HYP: un petit chien noir brun avec un collier rouge , un un rouge , tandis que le chien noir et blanc est debout sur le sol .
+HYP: un petit chien brun brun avec un collier noir et blanc sur le sol , et un chien noir et blanc , avec deux autres hommes en arrière-plan .
 
 SRC: a woman holding a newborn sitting on a couch with a man holding a dog inspecting the newborn .
 REF: une femme assise sur un canapé a un nourrisson dans les bras avec un homme qui tient un chien en train d' <unk> le nouveau - né .
-HYP: une femme tenant un livre sur un banc , tenant un un sur un trottoir avec un autre .
+HYP: une femme tenant un homme sur un banc , tenant un livre et un homme sur le trottoir .
 
 SRC: a gravel alleyway with over grown grass along the sides of worn out buildings .
 REF: une ruelle de graviers avec beaucoup de végétation le long des côtés de bâtiments <unk> .
-HYP: un skieur avec des cheveux de la de la de la de l' eau .
+HYP: un skieur blanc avec des figures sur le sol de la de la . .
 
 SRC: two people walking down a street next to a trash can .
 REF: deux personnes descendent une rue à côté d' une poubelle .
-HYP: deux personnes marchant dans une rue pavée d' un rue .
+HYP: deux personnes marchant dans une rue pavée à côté d' un bâtiment .
 
 SRC: black and white image of man sitting on small wall with young man standing next to him .
 REF: une image en noir et blanc d' un homme assis sur un muret avec un jeune homme debout à ses côtés .
-HYP: un homme et un homme blanc assis sur un banc avec un homme avec un avec un avec .
+HYP: un homme et un homme assis avec un guitare assis sur un banc avec des hommes et des .
 
 SRC: a black dog with a toy in its mouth walking in the water .
 REF: un chien noir avec un jouet dans la bouche qui marche dans l' eau .
-HYP: un chien noir avec un bâton dans dans l' eau dans l' eau .
+HYP: un chien noir avec un collier dans dans l' eau avec des éclaboussures .
 
 SRC: a black puppy wearing a gold tag walks along tire tracks in the snow .
 REF: un chiot noir portant une plaque d' <unk> dorée marche le long des traces de pneus dans la neige .
-HYP: un chien noir portant un collier marche sur le trottoir dans la rue .
+HYP: un petit noir portant un casque marche dans la neige dans la neige .
 
 SRC: black and white image of a boy under ten years of age near a stairwell looking through the bars of a fence toward the camera .
 REF: une image en noir et blanc d' un garçon de moins de dix ans près d' une cage d' escaliers en train de regarder à travers les barreaux d' une barrière vers l' objectif .
-HYP: un chien noir et blanc et un un à côté d' un grand bâtiment , d' un d' un d' un grand bâtiment en briques .
+HYP: un chien blanc et blanc sautant d' un grand de de l' un d' une grande foule de d' une grande foule d' une foule de . .
 
 SRC: two women sitting and man with camera standing next to them
 REF: deux femmes sont assises et un homme avec un appareil photo se tient debout à côté d' elles .
-HYP: deux femmes assises à une table avec un un avec des lunettes de soleil
+HYP: deux femmes sont debout et côté d' un homme et une autre femme
 
 SRC: two women with linked arms are walking down a street .
 REF: deux femmes se tenant par le bras descendent une rue .
@@ -608,71 +608,71 @@ HYP: deux femmes avec des chapeaux marchent dans une rue .
 
 SRC: a man is kneeling with his head lowered in a dark room with small lights on either side .
 REF: un homme s' agenouille la tête baissée dans une pièce sombre avec de petites lumières sur les côtés .
-HYP: un homme fait des figures avec une fille sur une voiture avec des des sur des marches .
+HYP: un homme fait des figures avec une avec avec une voiture avec des <unk> sur des marches .
 
 SRC: this image is of a dog sitting down looking at someone who is taking the picture of him .
 REF: cette image montre un chien assis en train de regarder la personne qui le prend en photo .
-HYP: c' est un un est assis à un d' , l' un qui a être le sol .
+HYP: c' est est un un et un chien et est assis à l' objectif .
 
 SRC: a man wearing a hat is sitting on the ground .
 REF: un homme portant un chapeau est assis par terre .
-HYP: un homme portant un chapeau est assis sur le sol .
+HYP: un homme portant un chapeau est assis sur le trottoir .
 
 SRC: several people examining samples of fabric hung in a long row .
 REF: plusieurs personnes examinent des échantillons de <unk> accrochés dans une longue rangée .
-HYP: plusieurs personnes se de la nourriture dans un grand d' un . .
+HYP: plusieurs personnes se des <unk> d' un dans un magasin de classe .
 
 SRC: a white dog with a brown face is sitting on a brick walkway .
 REF: un chien blanc avec un visage brun est assis sur une allée de briques .
-HYP: un chien blanc avec un collier rouge est sur sur un chemin de . .
+HYP: un chien blanc avec un collier rouge est sur sur un banc .
 
 SRC: a person holds onto the moving rail of a moving walkway .
 REF: une personne tient le rail d' un escalator en mouvement .
-HYP: une personne est sur le point d' une grande foule .
+HYP: une personne est debout devant un grand groupe de personnes .
 
 SRC: a person wearing a coat and scarf is writing in an open ledger .
 REF: une personne avec une veste et une écharpe est en train d' écrire dans un grand livre ouvert .
-HYP: une personne portant un chapeau et un chapeau de fait du vélo dans un parc .
+HYP: une personne portant un chapeau et une veste bleue fait du vélo .
 
 SRC: a couple of color , in what appears to be an amusement park
 REF: un couple de couleur dans ce qui semble être un parc d' attractions .
-HYP: un couple de personnes , dans un parc dans un parc
+HYP: un couple de , , , sont en train de faire un un dans un parc
 
 SRC: a young ponytailed woman with a jacket on stands in a subway train against the wall with her arms crossed .
 REF: une jeune femmes avec une queue de cheval et une veste se tient debout dans le métro contre le mur les bras croisés .
-HYP: une jeune femme avec un chapeau de soleil debout sur le trottoir avec une femme avec son bras de son . .
+HYP: une jeune femme avec un sac à dos est debout sur le trottoir avec un mur avec des arbres en arrière-plan .
 
 SRC: 3 dogs , two black boxers and a small tan dog play in the snow .
 REF: 3 chiens , deux <unk> noirs et un petit chien beige jouent dans la neige .
-HYP: trois chiens chiens et et chien noir et chien dans dans la neige .
+HYP: trois chiens noirs et un chien noir et noir jouent dans la neige .
 
 SRC: a brown dog is about to bite a black and white dog .
 REF: un chien au poil brun s' apprête à mordre un chien blanc et noir .
-HYP: un chien brun est sur le point d' un chien blanc et blanc .
+HYP: un chien brun est couché à côté d' un chien blanc et blanc .
 
 SRC: a dog is jumping up trying to see over a concrete wall .
 REF: un chien <unk> pour essayer de voir par - dessus un mur en béton .
-HYP: un chien saute pour attraper un ballon de football en . .
+HYP: un chien saute par - dessus un mur de un un . .
 
 SRC: a bulldog is sitting in a chair at a table with an orange coffee cup .
 REF: un <unk> est assis sur une chaise à une table avec une tasse de café orange .
-HYP: un policier est assis dans une chaise avec une femme avec une robe blanche .
+HYP: un bébé est assis dans une chaise avec une voiture avec une femme en . .
 
 SRC: a blonde woman unlocks the glass door of a shop .
 REF: une femme blonde <unk> la porte vitrée d' un magasin .
-HYP: une femme <unk> <unk> la <unk> d' une voiture .
+HYP: une femme <unk> <unk> <unk> une <unk> d' un magasin .
 
 SRC: a person and a black dog sitting in front of a television set .
 REF: une personne et un chien noir assis devant un poste de télévision .
-HYP: une personne et un chien noir sont devant un mur de . .
+HYP: un chien noir et un chien sont debout devant un mur de . .
 
 SRC: a man stands in a canter aisle of rows of empty pews .
 REF: un homme se tient debout dans un couloir d' église plein de sièges vides .
-HYP: un homme est debout devant un mur de <unk> <unk> <unk> .
+HYP: un homme est debout devant un grand <unk> de <unk> <unk> .
 
 SRC: a woman in a flowered skirt walking three children toward a woman and a boy .
 REF: une femme vêtue d' une jupe à fleurs avec trois enfants passe à côté d' une femme et d' un garçon .
-HYP: une femme en robe bleue et un un à côté d' un petit enfant .
+HYP: une femme avec un sac à dos et et un un un un un un . .
 
 SRC: a dog is wandering without a leash in front of a building .
 REF: un chien se promène sans laisse devant un bâtiment .
@@ -680,15 +680,15 @@ HYP: un chien se tient devant un bâtiment devant un bâtiment .
 
 SRC: a woman wearing a checkered coat and carrying a purse .
 REF: une femme portant un manteau à carreaux et un porte-monnaie .
-HYP: une femme portant un chapeau et un un sac à dos .
+HYP: une femme portant un chapeau et une veste bleue .
 
 SRC: a red vw ' bug ' sits in the foreground of a festival .
 REF: une <unk> rouge se trouve en premier plan d' un festival .
-HYP: un grand blanc , est assis sur le trottoir d' un bâtiment .
+HYP: un policier blanc est assis à des marches d' un bâtiment de . .
 
 SRC: a man and three women , two of them speaking to each other , sit on a white bench .
 REF: un homme et trois femmes , deux d' entre elles étant en pleine discussion , sont assis sur un banc blanc .
-HYP: un homme et deux femmes , deux femmes , deux deux femmes , sont assis sur un banc .
+HYP: un homme et deux femmes , deux femmes , deux deux enfants sont assis à côté d' un mur blanc .
 
 SRC: a woman is walking with her arm around a child .
 REF: une femme marche avec son bras autour de son enfant .
@@ -696,105 +696,105 @@ HYP: une femme marche avec son enfant à côté d' un . .
 
 SRC: two construction workers lean against supplies as they talk .
 REF: deux ouvriers du bâtiments <unk> appuient contre le matériel pendant qu' ils discutent .
-HYP: deux ouvriers du bâtiment travaillent tandis que des spectateurs regardent .
+HYP: deux ouvriers du bâtiment tandis que des spectateurs regardent leurs têtes .
 
 SRC: a group of three men and a woman walking up stairs from an underground tunnel
 REF: un groupe de trois hommes avec une femme qui montent les escaliers sortant d' un tunnel souterrain .
-HYP: un groupe d' hommes et une femme regardent un un dans un un
+HYP: un groupe d' hommes et une femme posent pour une photo d' un bâtiment
 
 SRC: the man and woman are holding hands .
 REF: l' homme et la femme se tiennent la main .
-HYP: l' homme et une femme se tiennent .
+HYP: l' homme et une femme sont en train de parler .
 
 SRC: group of women and young girls with hand up in flamenco style on pavement .
 REF: un groupe de femmes et de jeunes filles la main en l' air dans le style <unk> sur le trottoir .
-HYP: un groupe de femmes et une femme âgée en des <unk> dans dans une salle de . .
+HYP: un groupe de jeunes femmes et des femmes avec des <unk> dans leurs têtes .
 
 SRC: a person runs towards another at a large monument .
 REF: une personne court vers une autre à un grand monument .
-HYP: une personne court dans une rivière , un un .
+HYP: une personne se tient à travers un un d' eau .
 
 SRC: two kids wearing winter outfit   poising for a picture in black and white
 REF: deux enfants portent une tenue d' hiver et posent pour une image en noir et blanc .
-HYP: deux enfants portant des chapeaux de des des <unk> et un un en noir et
+HYP: deux enfants portant des casques de des casques et un un un un en blanc
 
 SRC: multiple pedestrians sitting , standing , and walking in an urban plaza with an elderly man in the foreground .
 REF: plusieurs piétons assis , debout , et marchant dans une rue commerçante avec une personne âgée en <unk> .
-HYP: des femmes , debout , debout , debout , debout et un homme avec un homme en arrière-plan .
+HYP: plusieurs filles , assises dans un bâtiment , avec un un et un un et un un homme en arrière-plan .
 
 SRC: a black and white image of a guy at a bench drinking a bottle of beer .
 REF: une image en noir et blanc d' un homme sur un banc en train de boire une bière .
-HYP: un chien blanc et blanc et un un un un un un un . .
+HYP: un chien blanc et un un un un un un un un un de . .
 
 SRC: a young woman , with flowers in her hair , poses in a long red dress with a sheer skirt .
 REF: une jeune femme , avec des fleurs dans les cheveux , qui pose , vêtue d' une longue robe rouge avec une jupe .
-HYP: une jeune femme , avec avec un cheveux rouge , avec une femme en robe rouge , avec un sac à dos .
+HYP: une jeune femme , avec des cheveux , avec une robe rouge , avec une femme en robe rose .
 
 SRC: a black bird decoy is stuck in the opening of   wire fence .
 REF: un <unk> d' oiseau noir est coincé dans l' ouverture d' une clôture barbelée .
-HYP: un <unk> noir est <unk> le long d' un match de . .
+HYP: un pilote de noir est en train de <unk> <unk> <unk> <unk> .
 
 SRC: a medium sized bird sits on an ivy covered metal fence .
 REF: un oiseau de taille moyenne s' assied sur une barrière de métal recouverte de <unk> .
-HYP: un pilote de est assis sur un toit de sur un . .
+HYP: un groupe de est assis sur un sur un sur de .
 
 SRC: a top down view of a man reading a magazine at a table
 REF: une vue <unk> d' un homme en train de lire un magazine à une table .
-HYP: une photo d' un homme tenant une une une une une une
+HYP: une photo d' un homme tenant une femme sur une table de
 
 SRC: this image is of three kids with their faces painted posing for a photo .
 REF: c' est l' image de trois enfants qui posent pour une photo avec de la peinture sur le visage .
-HYP: cette photo de trois enfants , deux enfants , avec une foule .
+HYP: cette photo d' enfants enfants avec des enfants avec un un .
 
 SRC: a yellow labrador is about to pick up an egg from the grass .
 REF: un labrador s' apprête à ramasser un œuf sur la pelouse .
-HYP: un skieur est <unk> sur le point de l' un d' un terrain .
+HYP: un skieur blanc saute sur le point de l' océan .
 
 SRC: this is a outdoor scene with rocks and a small body of water with a bridge in the background .
 REF: c' est une scène extérieure avec des rochers et un petit plan d' eau avec un pont en arrière-plan .
-HYP: voici un artiste de la rue avec une grande fille avec un sac à dos dans un parc . arrière-plan .
+HYP: c' est un un de avec un avec un avec un avec un avec un arrière-plan en arrière-plan .
 
 SRC: two women walking in a depressing urban area with a muggy cloudy day .
 REF: deux femmes marchent dans une rue urbaine triste par une journée nuageuse et <unk> .
-HYP: deux femmes marchant dans une rue avec un <unk> de <unk> <unk> .
+HYP: deux femmes marchant dans une rue avec des <unk> <unk> <unk> <unk> .
 
 SRC: a man sitting holding a stroller that has a fluffy medium size dog in it .
 REF: un homme est assis et tient une poussette dans laquelle se trouve un chien <unk> de taille moyenne .
-HYP: un homme tenant un cheval à un un un dans un dans un parc de . .
+HYP: un homme tenant un sac à un un dans un <unk> de <unk> <unk> .
 
 SRC: a man wearing dark shorts is walking past another man wearing a red shirt .
 REF: un homme vêtu d' un short sombre passe près d' un autre homme portant un maillot rouge .
-HYP: un homme vêtu d' un t - shirt rouge , un un homme en chemise blanche .
+HYP: un homme portant des lunettes de soleil , un un un un un un blanc .
 
 SRC: a girl in a jean jacket playing the guitar and singing into a microphone .
 REF: une fille vêtue d' une veste en jean joue de la guitare et chante dans un micro .
-HYP: une fille en veste rouge joue de la guitare dans une salle de .
+HYP: une fille en veste bleue joue de la guitare et chante dans un micro .
 
 SRC: four men at the top of a set of stairs and one man walking up the stairs .
 REF: quatre hommes en haut d' un escalier et un homme montant les marches .
-HYP: quatre hommes sur un trottoir d' un bâtiment avec un homme et un homme .
+HYP: quatre hommes à l' extérieur d' un bâtiment et un homme blanc .
 
 SRC: black and white picture of kids running down steps before their mother .
 REF: une image en noir et blanc d' enfants descendant les marches en courant devant leur mère .
-HYP: un chien et une femme en noir sont sur leurs têtes sur des marches .
+HYP: un chien blanc et blanc avec des des sur leurs têtes sur des marches .
 
 SRC: a lady walks while the shadow covers part of a house .
 REF: une femme marche pendant qu' une ombre couvre partiellement une maison .
-HYP: une femme se tient en l' air d' un bâtiment d' un . .
+HYP: une femme marche le long d' une route de une d' une . .
 
 SRC: a small child in a hat is holding a shovel as someone hold onto her arm .
 REF: un petit enfant avec un bonnet tient une pelle dans la main <unk> quelqu' un lui prend la main .
-HYP: un petit enfant en un chapeau tient un objet tandis qu' il est en train de son . .
+HYP: un petit enfant avec un chapeau tient un un tandis qu' il est en train de son . .
 
 SRC: young boy and man on deck of a ship outside in the sun .
 REF: un jeune garçon et un homme sur le pont d' un bateau au soleil .
-HYP: un jeune homme et un jeune homme sur un trottoir dans un parc de . .
+HYP: un jeune homme et un jeune garçon assis dans un parc dans des montagnes .
 
 SRC: two girls one with a cap and the other with sunglasses
 REF: deux filles , une portant une casquette , l' autre des lunettes de soleil .
-HYP: deux filles avec avec une femme avec des lunettes et l' autre
+HYP: deux filles avec un avec une femme et un avec des lunettes de soleil
 
 SRC: black and white photo of a man and his wife near a car
 REF: une photo en noir et blanc d' un homme et de sa femme près d' une voiture .
-HYP: un homme et une femme et un un et un un un un
+HYP: un chien blanc et blanc et un un un une photo
 
