@@ -1,90 +1,181 @@
+# src/data.py
+"""
+Data loading, tokenization, vocabulary building, Dataset class, and collate_fn
+for the English–French Machine Translation (Seq2Seq LSTM) project.
+"""
+
+import os
+from collections import Counter
 from pathlib import Path
+
+import spacy
 import torch
 from torch.utils.data import Dataset
 from torch.nn.utils.rnn import pad_sequence
-from torchtext.data.utils import get_tokenizer
-from torchtext.vocab import build_vocab_from_iterator
+
+
+# ---------------------------------------------------------------------
+# 1. Load spaCy tokenizers
+# ---------------------------------------------------------------------
+
+try:
+    SPACY_EN = spacy.load("en_core_web_sm")
+    SPACY_FR = spacy.load("fr_core_news_sm")
+except Exception as e:
+    raise RuntimeError(
+        "❌ spaCy models not found. Please install:\n"
+        "python -m spacy download en_core_web_sm\n"
+        "python -m spacy download fr_core_news_sm"
+    )
+
+
+# Tokenization functions
+def tokenize_en(text):
+    return [tok.text.lower() for tok in SPACY_EN.tokenizer(text)]
+
+
+def tokenize_fr(text):
+    return [tok.text.lower() for tok in SPACY_FR.tokenizer(text)]
+
+
+# ---------------------------------------------------------------------
+# 2. Read text files
+# ---------------------------------------------------------------------
+
+def read_lines(path):
+    """Read a file and strip blank lines."""
+    with open(path, "r", encoding="utf-8") as f:
+        return [line.strip() for line in f if line.strip()]
+
+
+# ---------------------------------------------------------------------
+# 3. Vocab class
+# ---------------------------------------------------------------------
+
+PAD_TOKEN = "<pad>"
+SOS_TOKEN = "<sos>"
+EOS_TOKEN = "<eos>"
+UNK_TOKEN = "<unk>"
+
+
+class Vocab:
+    """
+    Simple vocabulary class:
+    - builds from token lists
+    - numericalize() converts tokens to IDs
+    """
+    def __init__(self, tokens_list, min_freq=2, max_size=None):
+        counter = Counter()
+        for toks in tokens_list:
+            counter.update(toks)
+
+        # Special tokens first
+        self.itos = [PAD_TOKEN, SOS_TOKEN, EOS_TOKEN, UNK_TOKEN]
+
+        # Add vocab tokens
+        for tok, freq in counter.most_common():
+            if freq < min_freq:
+                continue
+            if tok in self.itos:
+                continue
+            self.itos.append(tok)
+            if max_size and len(self.itos) >= max_size:
+                break
+
+        self.stoi = {tok: i for i, tok in enumerate(self.itos)}
+
+    def __len__(self):
+        return len(self.itos)
+
+    def numericalize(self, tokens):
+        """Convert list of tokens → list of indices."""
+        return [self.stoi.get(t, self.stoi[UNK_TOKEN]) for t in tokens]
+
+
+# ---------------------------------------------------------------------
+# 4. Dataset class
+# ---------------------------------------------------------------------
 
 class TranslationDataset(Dataset):
-    def __init__(self, src_lines, tgt_lines):
-        assert len(src_lines) == len(tgt_lines)
-        self.src = src_lines
-        self.tgt = tgt_lines
+    """
+    Stores:
+    - src token list: [["a","man","is"...], ...]
+    - tgt token list: [["un","homme","..."], ...]
 
+    Returns:
+    - src_ids
+    - tgt_in_ids  (with <sos>)
+    - tgt_out_ids (with <eos>)
+    """
+    def __init__(self, src_tok_list, tgt_tok_list, src_vocab, tgt_vocab, max_len=100):
+        assert len(src_tok_list) == len(tgt_tok_list)
+
+        self.src = src_tok_list
+        self.tgt = tgt_tok_list
+        self.src_vocab = src_vocab
+        self.tgt_vocab = tgt_vocab
+        self.max_len = max_len
 
     def __len__(self):
         return len(self.src)
 
-
     def __getitem__(self, idx):
-        return self.src[idx], self.tgt[idx]
+        src_tokens = self.src[idx][:self.max_len]
+        tgt_tokens = self.tgt[idx][:self.max_len - 2]  # allow space for SOS/EOS
 
-def read_lines(path: Path, max_examples=None):
-    with open(path, 'r', encoding='utf-8') as f:
-        lines = [l.strip() for l in f if l.strip()]
-    if max_examples:
-        return lines[:max_examples]
-    return lines
+        src_ids = self.src_vocab.numericalize(src_tokens)
 
-def build_tokenizers():
-    en_tokenizer = get_tokenizer('spacy', language='en_core_web_sm')
-    fr_tokenizer = get_tokenizer('spacy', language='fr_core_news_sm')
-    return en_tokenizer, fr_tokenizer
+        tgt_ids_in = [self.tgt_vocab.stoi[SOS_TOKEN]] + \
+            self.tgt_vocab.numericalize(tgt_tokens)
 
-def build_vocabs(en_tokenizer, fr_tokenizer, src_lines, tgt_lines, config):
-    specials = config['vocab'].get('specials', ['<unk>', '<pad>', '<sos>', '<eos>'])
-    max_size = config['vocab'].get('max_size', 10000)
+        tgt_ids_out = self.tgt_vocab.numericalize(tgt_tokens) + \
+            [self.tgt_vocab.stoi[EOS_TOKEN]]
 
-    def yield_en():
-        for s in src_lines:
-            yield en_tokenizer(s)
+        return (
+            torch.tensor(src_ids, dtype=torch.long),
+            torch.tensor(tgt_ids_in, dtype=torch.long),
+            torch.tensor(tgt_ids_out, dtype=torch.long),
+        )
 
 
-    def yield_fr():
-        for t in tgt_lines:
-            yield fr_tokenizer(t)
+# ---------------------------------------------------------------------
+# 5. Collate function for DataLoader
+# ---------------------------------------------------------------------
+
+def build_collate_fn(src_vocab, tgt_vocab):
+    """
+    Returns a collate_fn with correct PAD idx preloaded.
+    """
+
+    def collate_fn(batch):
+        src_batch, tgt_in_batch, tgt_out_batch = zip(*batch)
+
+        src_lens = torch.tensor([len(x) for x in src_batch], dtype=torch.long)
+
+        src_pad = pad_sequence(
+            src_batch,
+            batch_first=True,
+            padding_value=src_vocab.stoi[PAD_TOKEN],
+        )
+        tgt_in_pad = pad_sequence(
+            tgt_in_batch,
+            batch_first=True,
+            padding_value=tgt_vocab.stoi[PAD_TOKEN],
+        )
+        tgt_out_pad = pad_sequence(
+            tgt_out_batch,
+            batch_first=True,
+            padding_value=tgt_vocab.stoi[PAD_TOKEN],
+        )
+
+        return src_pad, src_lens, tgt_in_pad, tgt_out_pad
+
+    return collate_fn
 
 
-    vocab_en = build_vocab_from_iterator(yield_en(), max_tokens=max_size, specials=specials)
-    vocab_fr = build_vocab_from_iterator(yield_fr(), max_tokens=max_size, specials=specials)
-    vocab_en.set_default_index(vocab_en['<unk>'])
-    vocab_fr.set_default_index(vocab_fr['<unk>'])
-    return vocab_en, vocab_fr
+# ---------------------------------------------------------------------
+# 6. Helper: build vocab from tokenized dataset
+# ---------------------------------------------------------------------
 
-def numericalize(text, tokenizer, vocab, add_sos_eos=False, sos='<sos>', eos='<eos>'):
-    toks = tokenizer(text)
-    ids = [vocab[t] for t in toks]
-    if add_sos_eos:
-        ids = [vocab[sos]] + ids + [vocab[eos]]
-    return torch.tensor(ids, dtype=torch.long)
-
-def collate_fn(batch, en_tokenizer, fr_tokenizer, vocab_en, vocab_fr, device):
-    src_tensors = [numericalize(x[0], en_tokenizer, vocab_en, add_sos_eos=False) for x in batch]
-    tgt_tensors = [numericalize(x[1], fr_tokenizer, vocab_fr, add_sos_eos=True) for x in batch]
-
-    src_lengths = torch.tensor([t.size(0) for t in src_tensors], dtype=torch.long)
-    src_lengths, perm = src_lengths.sort(descending=True)
-    src_tensors = [src_tensors[i] for i in perm]
-    tgt_tensors = [tgt_tensors[i] for i in perm]
-
-    src_padded = pad_sequence(src_tensors, batch_first=True, padding_value=vocab_en['<pad>']).to(device)
-    tgt_padded = pad_sequence(tgt_tensors, batch_first=True, padding_value=vocab_fr['<pad>']).to(device)
-    tgt_lengths = torch.tensor([t.size(0) for t in tgt_tensors], dtype=torch.long).to(device)
-
-    return src_padded, src_lengths.to(device), tgt_padded, tgt_lengths
-
-def load_datasets_and_vocabs(config, device):
-    data_dir = Path(config['data']['data_dir'])
-    max_examples = config['data'].get('max_examples', None)
-    train_src = read_lines(data_dir / config['data']['train_src'], max_examples)
-    train_tgt = read_lines(data_dir / config['data']['train_tgt'], max_examples)
-    val_src = read_lines(data_dir / config['data']['val_src'], max_examples)
-    val_tgt = read_lines(data_dir / config['data']['val_tgt'], max_examples)
-
-    en_tok, fr_tok = build_tokenizers()
-    vocab_en, vocab_fr = build_vocabs(en_tok, fr_tok, train_src, train_tgt, config)
-
-
-    train_ds = TranslationDataset(train_src, train_tgt)
-    val_ds = TranslationDataset(val_src, val_tgt)
-    return train_ds, val_ds, en_tok, fr_tok, vocab_en, vocab_fr
+def build_vocab_from_token_lists(token_lists, min_freq=2, max_size=10000):
+    return Vocab(token_lists, min_freq=min_freq, max_size=max_size)
