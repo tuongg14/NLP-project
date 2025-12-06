@@ -124,7 +124,7 @@ def main():
     # ============ LOAD CONFIG ===============
     config = load_config()
 
-    # device: lấy theo máy (GPU nếu có, không cần ghi trong config)
+    # device: lấy theo máy
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # ----- training -----
@@ -135,7 +135,7 @@ def main():
     TEACHER_FORCING = train_cfg["teacher_forcing"]
     CLIP = train_cfg["clip"]
 
-    # max_len cho greedy decode (nếu muốn có thể thêm vào config sau)
+    # max_len cho greedy decode
     MAX_LEN = 50
 
     # ----- model -----
@@ -152,8 +152,6 @@ def main():
     # ----- vocab -----
     vocab_cfg = config["vocab"]
     MIN_FREQ = vocab_cfg["min_freq"]
-    # specials trong config em đang không dùng trực tiếp,
-    # vì trong data.py đã cố định PAD_TOKEN, SOS_TOKEN, EOS_TOKEN, UNK_TOKEN
 
     # ----- paths -----
     paths_cfg = config["paths"]
