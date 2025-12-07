@@ -114,7 +114,7 @@ def compute_corpus_bleu(hyps, refs):
     hyps: list[str] – câu dự đoán
     refs: list[str] – câu tham chiếu
     """
-    bleu = sacrebleu.corpus_bleu(hyps, [refs])
+    bleu = sacrebleu.corpus_bleu(hyps, [refs], force=True)
     return bleu.score
 
 # ====================================================
