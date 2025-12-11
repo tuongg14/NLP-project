@@ -1,8 +1,10 @@
 training:
   batch_size: 64
-  num_epochs: 3
+  num_epochs: 12
   learning_rate: 0.001
   teacher_forcing: 0.5
+  min_teacher_forcing: 0.1
+  tf_decay: 0.95
   clip: 1.0
 
 model:

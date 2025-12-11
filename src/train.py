@@ -4,6 +4,7 @@ from pathlib import Path
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
+from torch.optim.lr_scheduler import ReduceLROnPlateau
 from tqdm import tqdm
 import sacrebleu
 
@@ -129,10 +130,15 @@ def main():
 
     # ----- training -----
     train_cfg = config["training"]
-    BATCH_SIZE = train_cfg["batch_size"]
-    NUM_EPOCHS = train_cfg["num_epochs"]
-    LEARNING_RATE = train_cfg["learning_rate"]
-    TEACHER_FORCING = train_cfg["teacher_forcing"]
+
+    BATCH_SIZE          = train_cfg["batch_size"]
+    NUM_EPOCHS          = train_cfg["num_epochs"]
+    LEARNING_RATE       = train_cfg["learning_rate"]
+
+    BASE_TEACHER_FORCING = train_cfg["teacher_forcing"]
+    MIN_TEACHER_FORCING  = train_cfg.get("min_teacher_forcing", 0.1)
+    TF_DECAY             = train_cfg.get("tf_decay", 0.95)
+
     CLIP = train_cfg["clip"]
 
     # max_len cho greedy decode
@@ -212,7 +218,15 @@ def main():
     dec = Decoder(len(tgt_vocab), EMB_DIM, HID_DIM, N_LAYERS, DROPOUT)
     model = Seq2Seq(enc, dec, device).to(device)
 
+    # Optimizer + Scheduler
     optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
+
+    scheduler = ReduceLROnPlateau(
+        optimizer,
+        mode="max",     
+        factor=0.5,     
+        patience=2,
+    )
 
     best_bleu = -1.0
 
@@ -221,19 +235,36 @@ def main():
     for epoch in range(1, NUM_EPOCHS + 1):
         t0 = time.time()
 
+        # ----- Teacher Forcing decay -----
+        teacher_forcing_ratio = max(
+            MIN_TEACHER_FORCING,
+            BASE_TEACHER_FORCING * (TF_DECAY ** (epoch - 1))
+        )
+
+        current_lr = optimizer.param_groups[0]["lr"]
+        print(
+            f"\n=== Epoch {epoch}/{NUM_EPOCHS} | "
+            f"TF={teacher_forcing_ratio:.3f} | LR={current_lr:.6f} ==="
+        )
+
+        # ----- TRAIN 1 EPOCH -----
         train_loss = train_epoch(
             model, train_loader, optimizer, criterion,
-            teacher_forcing_ratio=TEACHER_FORCING,
+            teacher_forcing_ratio=teacher_forcing_ratio,
             clip=CLIP,
             device=device,
         )
 
+        # ----- VALIDATE (BLEU) -----
         hyps, refs = generate_hyps_from_loader(
             model, val_loader, tgt_vocab,
             max_len=MAX_LEN,
             device=device,
         )
         val_bleu = compute_corpus_bleu(hyps, refs)
+
+        # ----- UPDATE SCHEDULER -----
+        scheduler.step(val_bleu)
 
         elapsed = time.time() - t0
 

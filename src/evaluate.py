@@ -1,5 +1,3 @@
-# evaluate.py
-
 import torch
 from pathlib import Path
 
