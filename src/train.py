@@ -15,7 +15,7 @@ from data import (
     build_vocab_from_token_lists, TranslationDataset, build_collate_fn,
     PAD_TOKEN, SOS_TOKEN, EOS_TOKEN,
 )
-from model import Seq2Seq, Encoder, Decoder
+from model import Seq2Seq, Encoder, Decoder,Seq2SeqWithAttention, AttentionDecoder
 
 
 # ====================================================
@@ -214,8 +214,10 @@ def main():
     criterion = nn.CrossEntropyLoss(ignore_index=pad_idx)
 
     enc = Encoder(len(src_vocab), EMB_DIM, HID_DIM, N_LAYERS, DROPOUT)
-    dec = Decoder(len(tgt_vocab), EMB_DIM, HID_DIM, N_LAYERS, DROPOUT)
-    model = Seq2Seq(enc, dec, device).to(device)
+    #dec = Decoder(len(tgt_vocab), EMB_DIM, HID_DIM, N_LAYERS, DROPOUT)
+    dec = AttentionDecoder(len(tgt_vocab), EMB_DIM, HID_DIM, N_LAYERS, DROPOUT)
+    #model = Seq2Seq(enc, dec, device).to(device)
+    model = Seq2SeqWithAttention(enc, dec, device).to(device)
 
     optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
 

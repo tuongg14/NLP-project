@@ -9,7 +9,7 @@ from data import (
     TranslationDataset, build_collate_fn,
     Vocab, PAD_TOKEN, SOS_TOKEN, EOS_TOKEN,
 )
-from model import Encoder, Decoder, Seq2Seq
+from model import Encoder, Decoder, Seq2Seq, Seq2SeqWithAttention, AttentionDecoder
 from train import generate_hyps_from_loader, compute_corpus_bleu
 
 
@@ -58,9 +58,14 @@ def run_evaluate(
     n_layers = m_cfg["n_layers"]
     dropout = m_cfg["dropout"]
 
+    #enc = Encoder(len(src_vocab), emb_dim, hid_dim, n_layers, dropout)
+    #dec = Decoder(len(tgt_vocab), emb_dim, hid_dim, n_layers, dropout)
+    #model = Seq2Seq(enc, dec, DEVICE).to(DEVICE)
     enc = Encoder(len(src_vocab), emb_dim, hid_dim, n_layers, dropout)
-    dec = Decoder(len(tgt_vocab), emb_dim, hid_dim, n_layers, dropout)
-    model = Seq2Seq(enc, dec, DEVICE).to(DEVICE)
+    dec = AttentionDecoder(len(tgt_vocab), emb_dim, hid_dim, n_layers, dropout)
+
+    # dùng Seq2SeqWithAttention
+    model = Seq2SeqWithAttention(enc, dec, DEVICE).to(DEVICE)
 
     model.load_state_dict(ckpt["model_state_dict"])
     model.eval()
