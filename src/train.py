@@ -1,4 +1,5 @@
 import time
+import json
 from pathlib import Path
 
 import torch
@@ -15,6 +16,7 @@ from data import (
     PAD_TOKEN, SOS_TOKEN, EOS_TOKEN,
 )
 from model import Seq2Seq, Encoder, Decoder
+
 
 # ====================================================
 # ================ TRAINING FUNCTIONS =================
@@ -51,14 +53,36 @@ def train_epoch(model, dataloader, optimizer, criterion,
 
     return epoch_loss / len(dataloader)
 
+
+def evaluate_epoch(model, dataloader, criterion, device="cpu"):
+    model.eval()
+    epoch_loss = 0.0
+
+    with torch.no_grad():
+        for src, src_lens, tgt_in, tgt_out in tqdm(dataloader, desc="val"):
+            src, src_lens = src.to(device), src_lens.to(device)
+            tgt_in, tgt_out = tgt_in.to(device), tgt_out.to(device)
+
+            output = model(src, src_lens, tgt_in, teacher_forcing_ratio=0.0)
+            vocab_size = output.size(-1)
+
+            output = output[:, 1:, :].contiguous()
+            tgt_out = tgt_out[:, 1:].contiguous()
+
+            loss = criterion(
+                output.view(-1, vocab_size),
+                tgt_out.view(-1)
+            )
+
+            epoch_loss += loss.item()
+
+    return epoch_loss / len(dataloader)
+
+
 # ====================================================
 # =============== BLEU EVALUATION ====================
 # ====================================================
 def safe_tok_from_idx(vocab, idx: int):
-    """
-    Đổi id -> token, tránh lỗi out-of-range.
-    vocab: instance Vocab trong data.py (có itos, stoi).
-    """
     try:
         if 0 <= idx < len(vocab.itos):
             tok = vocab.itos[idx]
@@ -67,6 +91,7 @@ def safe_tok_from_idx(vocab, idx: int):
     except Exception:
         tok = "<unk>"
     return tok
+
 
 def generate_hyps_from_loader(model, dataloader, tgt_vocab,
                               max_len=50, device="cpu"):
@@ -84,7 +109,7 @@ def generate_hyps_from_loader(model, dataloader, tgt_vocab,
                 eos_idx=tgt_vocab.stoi[EOS_TOKEN],
             )
 
-            # ----- hypotheses (dự đoán) -----
+            # hypotheses
             for seq in preds:
                 tokens = []
                 for idx in seq:
@@ -95,7 +120,7 @@ def generate_hyps_from_loader(model, dataloader, tgt_vocab,
                         tokens.append(tok)
                 hyps.append(" ".join(tokens))
 
-            # ----- references (ground truth) từ tgt_out -----
+            # references
             tgt_np = tgt_out.cpu().numpy()
             for line in tgt_np:
                 tokens = []
@@ -109,39 +134,30 @@ def generate_hyps_from_loader(model, dataloader, tgt_vocab,
 
     return hyps, refs
 
+
 def compute_corpus_bleu(hyps, refs):
-    """
-    Tính BLEU corpus-level bằng sacrebleu.
-    hyps: list[str] – câu dự đoán
-    refs: list[str] – câu tham chiếu
-    """
     bleu = sacrebleu.corpus_bleu(hyps, [refs], force=True)
     return bleu.score
+
 
 # ====================================================
 # ====================== MAIN =========================
 # ====================================================
 def main():
-    # ============ LOAD CONFIG ===============
     config = load_config()
-
-    # device: lấy theo máy
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # ----- training -----
     train_cfg = config["training"]
-
-    BATCH_SIZE          = train_cfg["batch_size"]
-    NUM_EPOCHS          = train_cfg["num_epochs"]
-    LEARNING_RATE       = train_cfg["learning_rate"]
+    BATCH_SIZE = train_cfg["batch_size"]
+    NUM_EPOCHS = train_cfg["num_epochs"]
+    LEARNING_RATE = train_cfg["learning_rate"]
 
     BASE_TEACHER_FORCING = train_cfg["teacher_forcing"]
-    MIN_TEACHER_FORCING  = train_cfg.get("min_teacher_forcing", 0.1)
-    TF_DECAY             = train_cfg.get("tf_decay", 0.95)
+    MIN_TEACHER_FORCING = train_cfg.get("min_teacher_forcing", 0.1)
+    TF_DECAY = train_cfg.get("tf_decay", 0.97)
 
     CLIP = train_cfg["clip"]
-
-    # max_len cho greedy decode
     MAX_LEN = 50
 
     # ----- model -----
@@ -164,51 +180,34 @@ def main():
     ckpt_path = Path(paths_cfg["checkpoint"])
     ckpt_path.parent.mkdir(exist_ok=True, parents=True)
 
+    results_dir = Path(paths_cfg.get("results", "../results/"))
+    results_dir.mkdir(parents=True, exist_ok=True)
+
     # ============ LOAD DATA ===============
     print("Loading data...")
-
     train_src = read_lines(data_dir / "train.en")
     train_tgt = read_lines(data_dir / "train.fr")
-    val_src   = read_lines(data_dir / "val.en")
-    val_tgt   = read_lines(data_dir / "val.fr")
+    val_src = read_lines(data_dir / "val.en")
+    val_tgt = read_lines(data_dir / "val.fr")
 
-    # Token hóa (giống notebook)
     train_src_tok = [tokenize_en(s) for s in train_src]
     train_tgt_tok = [tokenize_fr(s) for s in train_tgt]
-    val_src_tok   = [tokenize_en(s) for s in val_src]
-    val_tgt_tok   = [tokenize_fr(s) for s in val_tgt]
+    val_src_tok = [tokenize_en(s) for s in val_src]
+    val_tgt_tok = [tokenize_fr(s) for s in val_tgt]
 
-    # Build vocab (dùng min_freq từ config)
-    src_vocab = build_vocab_from_token_lists(
-        train_src_tok,
-        min_freq=MIN_FREQ,
-    )
-    tgt_vocab = build_vocab_from_token_lists(
-        train_tgt_tok,
-        min_freq=MIN_FREQ,
-    )
+    src_vocab = build_vocab_from_token_lists(train_src_tok, min_freq=MIN_FREQ)
+    tgt_vocab = build_vocab_from_token_lists(train_tgt_tok, min_freq=MIN_FREQ)
 
     print(f"SRC vocab size: {len(src_vocab)}")
     print(f"TGT vocab size: {len(tgt_vocab)}")
 
-    # Dataset + Dataloader
     train_ds = TranslationDataset(train_src_tok, train_tgt_tok, src_vocab, tgt_vocab)
-    val_ds   = TranslationDataset(val_src_tok, val_tgt_tok, src_vocab, tgt_vocab)
+    val_ds = TranslationDataset(val_src_tok, val_tgt_tok, src_vocab, tgt_vocab)
 
     collate = build_collate_fn(src_vocab, tgt_vocab)
 
-    train_loader = DataLoader(
-        train_ds,
-        batch_size=BATCH_SIZE,
-        shuffle=True,
-        collate_fn=collate,
-    )
-    val_loader = DataLoader(
-        val_ds,
-        batch_size=BATCH_SIZE,
-        shuffle=False,
-        collate_fn=collate,
-    )
+    train_loader = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=True, collate_fn=collate)
+    val_loader = DataLoader(val_ds, batch_size=BATCH_SIZE, shuffle=False, collate_fn=collate)
 
     # ============ INIT MODEL ===============
     pad_idx = tgt_vocab.stoi[PAD_TOKEN]
@@ -218,36 +217,36 @@ def main():
     dec = Decoder(len(tgt_vocab), EMB_DIM, HID_DIM, N_LAYERS, DROPOUT)
     model = Seq2Seq(enc, dec, device).to(device)
 
-    # Optimizer + Scheduler
     optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
 
+    # Scheduler theo val_loss
     scheduler = ReduceLROnPlateau(
         optimizer,
-        mode="max",     
-        factor=0.5,     
+        mode="min",
+        factor=0.5,
         patience=2,
     )
 
-    best_bleu = -1.0
+    # ============ LOGS ===============
+    train_loss_log, val_loss_log, val_bleu_log = [], [], []
+
+    best_val_loss = float("inf")   # report/plot
+    best_bleu = -1.0               # save checkpoint
 
     # ============ TRAIN LOOP ===============
     print("Training model...")
     for epoch in range(1, NUM_EPOCHS + 1):
         t0 = time.time()
 
-        # ----- Teacher Forcing decay -----
         teacher_forcing_ratio = max(
             MIN_TEACHER_FORCING,
             BASE_TEACHER_FORCING * (TF_DECAY ** (epoch - 1))
         )
 
         current_lr = optimizer.param_groups[0]["lr"]
-        print(
-            f"\n=== Epoch {epoch}/{NUM_EPOCHS} | "
-            f"TF={teacher_forcing_ratio:.3f} | LR={current_lr:.6f} ==="
-        )
+        print(f"\n=== Epoch {epoch}/{NUM_EPOCHS} | TF={teacher_forcing_ratio:.3f} | LR={current_lr:.6f} ===")
 
-        # ----- TRAIN 1 EPOCH -----
+        # ----- TRAIN -----
         train_loss = train_epoch(
             model, train_loader, optimizer, criterion,
             teacher_forcing_ratio=teacher_forcing_ratio,
@@ -255,7 +254,10 @@ def main():
             device=device,
         )
 
-        # ----- VALIDATE (BLEU) -----
+        # ----- VAL LOSS -----
+        val_loss = evaluate_epoch(model, val_loader, criterion, device=device)
+
+        # ----- VAL BLEU -----
         hyps, refs = generate_hyps_from_loader(
             model, val_loader, tgt_vocab,
             max_len=MAX_LEN,
@@ -263,19 +265,31 @@ def main():
         )
         val_bleu = compute_corpus_bleu(hyps, refs)
 
-        # ----- UPDATE SCHEDULER -----
-        scheduler.step(val_bleu)
+        # logs
+        train_loss_log.append(train_loss)
+        val_loss_log.append(val_loss)
+        val_bleu_log.append(val_bleu)
+
+        # scheduler step theo loss
+        scheduler.step(val_loss)
 
         elapsed = time.time() - t0
+        gap = abs(train_loss - val_loss)
 
         print(
             f"Epoch {epoch:02d}/{NUM_EPOCHS} | "
             f"Train Loss: {train_loss:.3f} | "
+            f"Val Loss: {val_loss:.3f} | "
+            f"Gap: {gap:.3f} | "
             f"Val BLEU: {val_bleu:.2f} | "
             f"Time: {elapsed:.1f}s"
         )
 
-        # Lưu checkpoint tốt nhất theo BLEU
+        # best val_loss (report)
+        if val_loss < best_val_loss:
+            best_val_loss = val_loss
+
+        # SAVE CHECKPOINT BY BLEU
         if val_bleu > best_bleu:
             best_bleu = val_bleu
             torch.save(
@@ -284,12 +298,31 @@ def main():
                     "src_itos": src_vocab.itos,
                     "tgt_itos": tgt_vocab.itos,
                     "config": config,
+                    "epoch": epoch,
+                    "val_bleu": best_bleu,
                 },
                 ckpt_path,
             )
-            print("  → Saved best checkpoint to:", ckpt_path)
+            print("  → Saved best checkpoint (by Val BLEU) to:", ckpt_path)
 
-    print(f"\nTraining finished. BEST VAL BLEU = {best_bleu:.2f}")
+    # ============ SAVE METRICS (FOR PLOT) ===============
+    metrics = {
+        "train_loss": train_loss_log,
+        "val_loss": val_loss_log,
+        "val_bleu": val_bleu_log
+    }
+    metrics_path = results_dir / "metrics.json"
+    with open(metrics_path, "w", encoding="utf-8") as f:
+        json.dump(metrics, f, indent=2)
+
+    print("Saved metrics to:", metrics_path)
+
+    print(
+        f"\nTraining finished.\n"
+        f"Best Val Loss (for report) = {best_val_loss:.3f}\n"
+        f"Best Val BLEU (saved ckpt) = {best_bleu:.2f}"
+    )
+
 
 if __name__ == "__main__":
     main()
