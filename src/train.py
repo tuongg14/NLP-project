@@ -15,7 +15,7 @@ from data import (
     build_vocab_from_token_lists, TranslationDataset, build_collate_fn,
     PAD_TOKEN, SOS_TOKEN, EOS_TOKEN,
 )
-from model import Seq2Seq, Encoder, Decoder,Seq2SeqWithAttention, AttentionDecoder
+from model import Encoder, Seq2SeqWithAttention, AttentionDecoder
 
 
 # ====================================================
@@ -33,22 +33,19 @@ def train_epoch(model, dataloader, optimizer, criterion,
         optimizer.zero_grad()
 
         # output: [B, T, V]
-        output = model(src, src_lens, tgt_in,
-                       teacher_forcing_ratio=teacher_forcing_ratio)
+        output = model(src, src_lens, tgt_in, teacher_forcing_ratio=teacher_forcing_ratio)
         vocab_size = output.size(-1)
 
-        # Bỏ timestep 0 (ứng với <sos>)
-        output = output[:, 1:, :].contiguous()    # [B, T-1, V]
-        tgt_out = tgt_out[:, 1:].contiguous()     # [B, T-1]
+        # bỏ timestep 0 (ứng với <sos>)
+        output = output[:, 1:, :].contiguous()   # [B, T-1, V]
+        tgt_out = tgt_out[:, 1:].contiguous()    # [B, T-1]
 
-        loss = criterion(
-            output.view(-1, vocab_size),
-            tgt_out.view(-1)
-        )
+        loss = criterion(output.view(-1, vocab_size), tgt_out.view(-1))
         loss.backward()
 
         torch.nn.utils.clip_grad_norm_(model.parameters(), clip)
         optimizer.step()
+
         epoch_loss += loss.item()
 
     return epoch_loss / len(dataloader)
@@ -69,32 +66,30 @@ def evaluate_epoch(model, dataloader, criterion, device="cpu"):
             output = output[:, 1:, :].contiguous()
             tgt_out = tgt_out[:, 1:].contiguous()
 
-            loss = criterion(
-                output.view(-1, vocab_size),
-                tgt_out.view(-1)
-            )
-
+            loss = criterion(output.view(-1, vocab_size), tgt_out.view(-1))
             epoch_loss += loss.item()
 
     return epoch_loss / len(dataloader)
 
 
 # ====================================================
-# =============== BLEU EVALUATION ====================
+# ================= BLEU EVALUATION ==================
 # ====================================================
 def safe_tok_from_idx(vocab, idx: int):
     try:
         if 0 <= idx < len(vocab.itos):
-            tok = vocab.itos[idx]
-        else:
-            tok = "<unk>"
+            return vocab.itos[idx]
     except Exception:
-        tok = "<unk>"
-    return tok
+        pass
+    return "<unk>"
 
 
-def generate_hyps_from_loader(model, dataloader, tgt_vocab,
-                              max_len=50, device="cpu"):
+def generate_hyps_from_loader(model, dataloader, tgt_vocab, max_len=50, device="cpu"):
+    """
+    Trả về:
+      hyps: list[str]
+      refs: list[str]
+    """
     model.eval()
     hyps, refs = [], []
 
@@ -115,19 +110,19 @@ def generate_hyps_from_loader(model, dataloader, tgt_vocab,
                 for idx in seq:
                     if idx == tgt_vocab.stoi[EOS_TOKEN]:
                         break
-                    tok = safe_tok_from_idx(tgt_vocab, idx)
+                    tok = safe_tok_from_idx(tgt_vocab, int(idx))
                     if tok not in (PAD_TOKEN, SOS_TOKEN, EOS_TOKEN):
                         tokens.append(tok)
                 hyps.append(" ".join(tokens))
 
-            # references
+            # references (từ tgt_out)
             tgt_np = tgt_out.cpu().numpy()
             for line in tgt_np:
                 tokens = []
                 for idx in line:
                     if idx == tgt_vocab.stoi[EOS_TOKEN]:
                         break
-                    tok = safe_tok_from_idx(tgt_vocab, idx)
+                    tok = safe_tok_from_idx(tgt_vocab, int(idx))
                     if tok not in (PAD_TOKEN, SOS_TOKEN, EOS_TOKEN):
                         tokens.append(tok)
                 refs.append(" ".join(tokens))
@@ -158,7 +153,11 @@ def main():
     TF_DECAY = train_cfg.get("tf_decay", 0.97)
 
     CLIP = train_cfg["clip"]
-    MAX_LEN = 50
+    MAX_LEN = train_cfg.get("max_len", 50)
+
+    # early stopping (theo val_loss)
+    EARLY_PATIENCE = train_cfg.get("early_patience", 3)
+    EARLY_MIN_DELTA = train_cfg.get("early_min_delta", 1e-4)
 
     # ----- model -----
     model_cfg = config["model"]
@@ -213,10 +212,8 @@ def main():
     pad_idx = tgt_vocab.stoi[PAD_TOKEN]
     criterion = nn.CrossEntropyLoss(ignore_index=pad_idx)
 
-    enc = Encoder(len(src_vocab), EMB_DIM, HID_DIM, N_LAYERS, DROPOUT)
-    #dec = Decoder(len(tgt_vocab), EMB_DIM, HID_DIM, N_LAYERS, DROPOUT)
+    enc = Encoder(len(src_vocab), EMB_DIM, HID_DIM, N_LAYERS, DROPOUT, pad_idx=src_vocab.stoi.get(PAD_TOKEN, 0))
     dec = AttentionDecoder(len(tgt_vocab), EMB_DIM, HID_DIM, N_LAYERS, DROPOUT)
-    #model = Seq2Seq(enc, dec, device).to(device)
     model = Seq2SeqWithAttention(enc, dec, device).to(device)
 
     optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
@@ -232,8 +229,12 @@ def main():
     # ============ LOGS ===============
     train_loss_log, val_loss_log, val_bleu_log = [], [], []
 
-    best_val_loss = float("inf")   # report/plot
-    best_bleu = -1.0               # save checkpoint
+    best_bleu = -1.0                  # save checkpoint theo BLEU
+    best_val_loss_report = float("inf")
+
+    # Early stopping theo val_loss (dùng biến riêng)
+    best_val_loss_es = float("inf")
+    bad_epochs = 0
 
     # ============ TRAIN LOOP ===============
     print("Training model...")
@@ -287,11 +288,11 @@ def main():
             f"Time: {elapsed:.1f}s"
         )
 
-        # best val_loss (report)
-        if val_loss < best_val_loss:
-            best_val_loss = val_loss
+        # best val_loss (chỉ để report)
+        if val_loss < best_val_loss_report:
+            best_val_loss_report = val_loss
 
-        # SAVE CHECKPOINT BY BLEU
+        # SAVE CHECKPOINT BY BLEU (đúng yêu cầu thầy + evaluate)
         if val_bleu > best_bleu:
             best_bleu = val_bleu
             torch.save(
@@ -307,6 +308,17 @@ def main():
             )
             print("  → Saved best checkpoint (by Val BLEU) to:", ckpt_path)
 
+        # ======== EARLY STOPPING (by val_loss) ========
+        if val_loss < best_val_loss_es - EARLY_MIN_DELTA:
+            best_val_loss_es = val_loss
+            bad_epochs = 0
+        else:
+            bad_epochs += 1
+
+        if bad_epochs >= EARLY_PATIENCE:
+            print(f"Early stopping: val_loss không giảm sau {EARLY_PATIENCE} epoch.")
+            break
+
     # ============ SAVE METRICS (FOR PLOT) ===============
     metrics = {
         "train_loss": train_loss_log,
@@ -321,7 +333,7 @@ def main():
 
     print(
         f"\nTraining finished.\n"
-        f"Best Val Loss (for report) = {best_val_loss:.3f}\n"
+        f"Best Val Loss (for report) = {best_val_loss_report:.3f}\n"
         f"Best Val BLEU (saved ckpt) = {best_bleu:.2f}"
     )
 
