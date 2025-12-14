@@ -113,9 +113,19 @@ def is_attention_checkpoint(state_dict):
     """
     Heuristic: checkpoint có attention nếu có key chứa 'attention'
     """
-    for k in state_dict.keys():
-        if "attention" in k.lower():
-            return True
+    #for k in state_dict.keys():
+    #    if "attention" in k.lower():
+    #        return True
+    #return False
+    """
+    AttentionDecoder có rnn input = emb_dim + hid_dim
+    Non-attention: emb_dim
+    """
+    for k, v in state_dict.items():
+        if "decoder.rnn.weight_ih_l0" in k:
+            in_features = v.shape[1]
+            # emb_dim luôn < emb_dim + hid_dim
+            return in_features > 512   # hoặc > emb_dim
     return False
 
 
