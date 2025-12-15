@@ -1,17 +1,17 @@
 training:
   batch_size: 64
   num_epochs: 12
-  learning_rate: 0.001
+  learning_rate: 0.0007
   teacher_forcing: 0.5
   min_teacher_forcing: 0.1
-  tf_decay: 0.95
+  tf_decay: 0.97
   clip: 1.0
 
 model:
   emb_dim: 256
   hid_dim: 512
-  n_layers: 1
-  dropout: 0
+  n_layers: 2
+  dropout: 0.5
 
 data:
   data_dir: "../data/"
