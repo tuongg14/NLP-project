@@ -13,7 +13,7 @@ from data import (
 )
 from model import Encoder, Decoder, Seq2Seq, AttentionDecoder, Seq2SeqWithAttention
 
-
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
@@ -133,14 +133,15 @@ def is_attention_checkpoint(state_dict):
 # Main evaluate
 # ---------------------------
 def run_evaluate(
-    ckpt_path="../checkpoints/best_model.pth",
-    save_samples_path="../results/samples.txt",
+    ckpt_path="checkpoints/best_model.pth",
+    save_samples_path="results/samples.txt",
     max_len=50,
 ):
-    config = load_config()
+    config = load_config(PROJECT_ROOT / "config" / "config.yml")
 
-    data_dir = Path(config["data"]["data_dir"])
-    ckpt_path = Path(ckpt_path)
+    data_dir = PROJECT_ROOT / config["data"]["data_dir"]
+
+    ckpt_path = PROJECT_ROOT / ckpt_path
 
     # ---- pick test files (auto-detect) ----
     test_en = pick_existing_file(data_dir, ["test.en", "test_2018_flickr.en", "test_2017_flickr.en"])
@@ -214,7 +215,7 @@ def run_evaluate(
     print("Test BLEU:", test_bleu)
 
     # ---- save samples ----
-    save_samples_path = Path(save_samples_path)
+    save_samples_path = PROJECT_ROOT / save_samples_path
     save_samples_path.parent.mkdir(parents=True, exist_ok=True)
 
     print("Saving sample translations to:", save_samples_path)

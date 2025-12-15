@@ -17,6 +17,7 @@ from data import (
 )
 from model import Encoder, Seq2SeqWithAttention, AttentionDecoder
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 # ====================================================
 # ================ TRAINING FUNCTIONS =================
@@ -168,7 +169,7 @@ def main():
 
     # ----- data -----
     data_cfg = config["data"]
-    data_dir = Path(data_cfg["data_dir"])
+    data_dir = PROJECT_ROOT / data_cfg["data_dir"]
 
     # ----- vocab -----
     vocab_cfg = config["vocab"]
@@ -176,10 +177,10 @@ def main():
 
     # ----- paths -----
     paths_cfg = config["paths"]
-    ckpt_path = Path(paths_cfg["checkpoint"])
+    ckpt_path = PROJECT_ROOT / paths_cfg["checkpoint"]
     ckpt_path.parent.mkdir(exist_ok=True, parents=True)
 
-    results_dir = Path(paths_cfg.get("results", "../results/"))
+    results_dir = PROJECT_ROOT / paths_cfg.get("results", "results")
     results_dir.mkdir(parents=True, exist_ok=True)
 
     # ============ LOAD DATA ===============
