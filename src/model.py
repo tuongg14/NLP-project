@@ -28,6 +28,7 @@ class Encoder(nn.Module):
         # src: [B, S]
         embedded = self.dropout(self.embedding(src))  # [B, S, E]
 
+        # Dùng pack_padded_sequence để bỏ qua padding khi chạy LSTM
         packed = pack_padded_sequence(
             embedded,
             src_lengths.cpu(),
@@ -37,6 +38,7 @@ class Encoder(nn.Module):
 
         packed_outputs, (hidden, cell) = self.rnn(packed)
 
+        # Khôi phục lại tensor có padding để dùng cho attention
         # encoder_outputs: [B, S, H] (đã restore padding)
         encoder_outputs, _ = pad_packed_sequence(packed_outputs, batch_first=True)
 
@@ -104,6 +106,8 @@ class Seq2Seq(nn.Module):
         # First input token = <sos>
         input_tok = tgt_in[:, 0].unsqueeze(1)  # [B, 1]
 
+        # Decoder sinh từng token một theo thời gian
+        # Có sử dụng teacher forcing với xác suất teacher_forcing_ratio
         for t in range(1, T):
             pred, hidden, cell = self.decoder(input_tok, hidden, cell)
             outputs[:, t] = pred
@@ -114,6 +118,7 @@ class Seq2Seq(nn.Module):
 
         return outputs
 
+    # Greedy decoding: tại mỗi bước chọn token có xác suất cao nhất
     def greedy_decode(self, src, src_len, max_len=50, sos_idx=None, eos_idx=None):
         """
         Return: LongTensor [B, <=max_len]
@@ -156,14 +161,18 @@ class LuongAttention(nn.Module):
         encoder_outputs: [B, S, H]
         mask: [B, S] optional (1=keep, 0=mask)
         """
+        # Tính attention score bằng dot-product giữa:
+        # encoder_outputs (B,S,H) và decoder_hidden (B,H)
         # dot: (B,S,H) x (B,H,1) -> (B,S,1) -> (B,S)
         energy = torch.bmm(encoder_outputs, decoder_hidden.unsqueeze(2)).squeeze(2)  # [B, S]
 
         if mask is not None:
             energy = energy.masked_fill(mask == 0, -1e10)
 
+        # Softmax theo chiều S để thu được phân phối attention
         attn_weights = F.softmax(energy, dim=1)  # [B, S]
 
+        # Context vector = tổng có trọng số của encoder outputs
         # context: (B,1,S) x (B,S,H) -> (B,1,H) -> (B,H)
         context = torch.bmm(attn_weights.unsqueeze(1), encoder_outputs).squeeze(1)  # [B, H]
 
@@ -173,6 +182,11 @@ class LuongAttention(nn.Module):
 # =========================
 # Attention Decoder
 # =========================
+# Attention Decoder:
+# 1. Embed input token
+# 2. Tính attention để lấy context
+# 3. Ghép embedding + context đưa vào LSTM
+# 4. Dự đoán token tiếp theo
 class AttentionDecoder(nn.Module):
     def __init__(self, output_dim, emb_dim, hid_dim, n_layers=1, dropout=0.3, pad_idx=0):
         super().__init__()
@@ -251,6 +265,8 @@ class Seq2SeqWithAttention(nn.Module):
 
         return outputs
 
+
+    # Greedy decoding: tại mỗi bước chọn token có xác suất cao nhất
     def greedy_decode(self, src, src_lens, max_len, sos_idx, eos_idx):
         """
         Return: LongTensor [B, <=max_len] (dừng khi tất cả gặp eos)

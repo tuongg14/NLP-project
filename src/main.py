@@ -18,7 +18,7 @@ print("Working directory:", os.getcwd())
 print("src in path:", PROJECT_ROOT / "src")
 
 # TRAIN 
-#main()
+main()
 # EVALUATE
 run_evaluate()
 # INFER

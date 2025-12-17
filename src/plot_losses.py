@@ -3,6 +3,9 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 
 # ================== LOAD METRICS ==================
+
+# metrics.json được sinh trong quá trình training
+# chứa train_loss và val_loss theo từng epoch
 results_dir = Path("../results")
 metrics_path = results_dir / "metrics.json"
 
@@ -18,6 +21,7 @@ with open(metrics_path, "r", encoding="utf-8") as f:
 train_loss = metrics["train_loss"]
 val_loss = metrics["val_loss"]
 
+# Tạo trục epoch (bắt đầu từ 1 để khớp với số epoch huấn luyện)
 epochs = list(range(1, len(train_loss) + 1))
 
 # ================== PLOT ==================
