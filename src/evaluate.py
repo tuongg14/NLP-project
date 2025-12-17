@@ -111,13 +111,6 @@ def load_checkpoint_safely(ckpt_path: Path):
 
 def is_attention_checkpoint(state_dict):
     """
-    Heuristic: checkpoint có attention nếu có key chứa 'attention'
-    """
-    #for k in state_dict.keys():
-    #    if "attention" in k.lower():
-    #        return True
-    #return False
-    """
     AttentionDecoder có rnn input = emb_dim + hid_dim
     Non-attention: emb_dim
     """

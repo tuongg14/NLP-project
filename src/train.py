@@ -34,16 +34,20 @@ def train_epoch(model, dataloader, optimizer, criterion,
         optimizer.zero_grad()
 
         # output: [B, T, V]
+        # Forward pass với teacher forcing
+        # teacher_forcing_ratio được giảm dần theo epoch để giảm exposure bias
         output = model(src, src_lens, tgt_in, teacher_forcing_ratio=teacher_forcing_ratio)
         vocab_size = output.size(-1)
 
         # bỏ timestep 0 (ứng với <sos>)
+        # Mô hình không cần dự đoán token bắt đầu câu
         output = output[:, 1:, :].contiguous()   # [B, T-1, V]
         tgt_out = tgt_out[:, 1:].contiguous()    # [B, T-1]
 
         loss = criterion(output.view(-1, vocab_size), tgt_out.view(-1))
         loss.backward()
 
+        # Gradient clipping để tránh exploding gradients trong RNN
         torch.nn.utils.clip_grad_norm_(model.parameters(), clip)
         optimizer.step()
 
@@ -61,6 +65,7 @@ def evaluate_epoch(model, dataloader, criterion, device="cpu"):
             src, src_lens = src.to(device), src_lens.to(device)
             tgt_in, tgt_out = tgt_in.to(device), tgt_out.to(device)
 
+            # Disable teacher forcing khi validation để mô phỏng điều kiện inference thực tế
             output = model(src, src_lens, tgt_in, teacher_forcing_ratio=0.0)
             vocab_size = output.size(-1)
 
@@ -112,6 +117,7 @@ def generate_hyps_from_loader(model, dataloader, tgt_vocab, max_len=50, device="
                     if idx == tgt_vocab.stoi[EOS_TOKEN]:
                         break
                     tok = safe_tok_from_idx(tgt_vocab, int(idx))
+                    # Loại bỏ các special tokens (<pad>, <sos>, <eos>) trước khi tính BLEU
                     if tok not in (PAD_TOKEN, SOS_TOKEN, EOS_TOKEN):
                         tokens.append(tok)
                 hyps.append(" ".join(tokens))
@@ -289,11 +295,11 @@ def main():
             f"Time: {elapsed:.1f}s"
         )
 
-        # best val_loss (chỉ để report)
+        # best val_loss
         if val_loss < best_val_loss_report:
             best_val_loss_report = val_loss
 
-        # SAVE CHECKPOINT BY BLEU (đúng yêu cầu thầy + evaluate)
+        # SAVE CHECKPOINT BY BLEU
         if val_bleu > best_bleu:
             best_bleu = val_bleu
             torch.save(
@@ -316,6 +322,8 @@ def main():
         else:
             bad_epochs += 1
 
+        # Early stopping dựa trên validation loss
+        # Tránh overfitting khi mô hình không còn cải thiện
         if bad_epochs >= EARLY_PATIENCE:
             print(f"Early stopping: val_loss không giảm sau {EARLY_PATIENCE} epoch.")
             break

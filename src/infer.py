@@ -16,9 +16,16 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 # Helpers
 # =====================
 def build_stoi(itos):
+    """
+    Build string-to-index dictionary từ itos (index-to-string).
+    """
     return {tok: i for i, tok in enumerate(itos)}
 
 def numericalize(tokens, stoi, unk_token="<unk>"):
+    """
+    Chuyển list token -> list index.
+    Token không có trong vocab sẽ map về <unk>.
+    """
     unk_idx = stoi.get(unk_token, stoi.get("<unk>", 3))
     return [stoi.get(t, unk_idx) for t in tokens]
 
@@ -50,6 +57,7 @@ tgt_itos = ckpt["tgt_itos"]
 src_stoi = build_stoi(src_itos)
 tgt_stoi = build_stoi(tgt_itos)
 
+# pad index cho encoder embedding
 src_pad_idx = src_stoi.get(PAD_TOKEN, 0)
 
 # ---- config from checkpoint (IMPORTANT) ----
@@ -112,15 +120,20 @@ def translate(sentence: str, max_len: int = 50) -> str:
     """
     Translate a single English sentence to target language.
     """
+    # Tokenize English sentence
     tokens = tokenize_en(sentence)
+
+    # Convert tokens to indices
     ids = numericalize(tokens, src_stoi, unk_token="<unk>")
 
+    # Build tensor: [1, S]
     src_tensor = torch.tensor(ids, dtype=torch.long).unsqueeze(0).to(DEVICE)
     src_len = torch.tensor([len(ids)], dtype=torch.long).to(DEVICE)
 
     sos_idx = tgt_stoi[SOS_TOKEN]
     eos_idx = tgt_stoi[EOS_TOKEN]
 
+    # Greedy decoding (no teacher forcing)
     with torch.no_grad():
         preds = model.greedy_decode(
             src_tensor,

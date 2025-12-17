@@ -125,9 +125,11 @@ class TranslationDataset(Dataset):
 
         src_ids = self.src_vocab.numericalize(src_tokens)
 
+        # Decoder input starts with <sos>
         tgt_ids_in = [self.tgt_vocab.stoi[SOS_TOKEN]] + \
             self.tgt_vocab.numericalize(tgt_tokens)
 
+        # Decoder output ends with <eos>
         tgt_ids_out = self.tgt_vocab.numericalize(tgt_tokens) + \
             [self.tgt_vocab.stoi[EOS_TOKEN]]
 
@@ -145,6 +147,12 @@ class TranslationDataset(Dataset):
 def build_collate_fn(src_vocab, tgt_vocab):
     """
     Returns a collate_fn with correct PAD idx preloaded.
+
+    Output:
+    - src_pad: (B, src_len)
+    - src_lens: (B,)
+    - tgt_in_pad: (B, tgt_len)
+    - tgt_out_pad: (B, tgt_len)
     """
 
     def collate_fn(batch):
