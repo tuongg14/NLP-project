@@ -1,2 +1,5 @@
-checkpoints/
-*.pth
+# Ignore all checkpoints
+checkpoints/*
+
+# But allow the best model checkpoint
+!checkpoints/best_model.pth
